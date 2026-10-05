@@ -186,9 +186,10 @@
   }
 
   /* ========================================================================
-     SENIOR FRONTEND IMPLEMENTATION:
-     1. Instant, responsive page navigation with YouTube-style top progress bar
-     2. Sticky Liquid Glass header scroll elevation
+     Page navigation feedback + sticky header
+     1. Top progress bar while the next page is loading (the cross-fade itself
+        is done by CSS View Transitions, see base.css)
+     2. Sticky liquid-glass header gets more depth once the page is scrolled
      ======================================================================== */
 
   // Inject top loading progress bar
@@ -225,11 +226,11 @@
     } catch (err) {}
   });
 
-  window.addEventListener("pageshow", function () {
-    pBar.classList.add("is-finishing");
-    setTimeout(function () {
-      pBar.classList.remove("is-loading", "is-finishing");
-    }, 300);
+  // The bar only belongs to the page being left. When a page is shown again
+  // from the back/forward cache, clear it without animating; a freshly
+  // loaded page never shows it.
+  window.addEventListener("pageshow", function (e) {
+    if (e.persisted) pBar.classList.remove("is-loading", "is-finishing");
   });
 
   /* ---------- Sticky Liquid Glass Header Scroll Depth ---------- */

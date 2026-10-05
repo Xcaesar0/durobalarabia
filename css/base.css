@@ -100,13 +100,15 @@ body {
 
 html {
   scroll-behavior: smooth;
+  /* every page opens on burgundy, so no pale frame shows while a page loads */
+  background: var(--background-inverse);
 }
 
 body {
   font-family: "Readex Pro", system-ui, sans-serif;
   font-variation-settings: "HEXP" 0;
   color: var(--text-primary);
-  background: var(--background-primary);
+  background: var(--background-inverse);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -160,6 +162,8 @@ button {
   position: relative;
   direction: ltr; /* geometry follows Figma's x/y; text runs RTL below */
   overflow: hidden;
+  /* clip (not hidden): no scroll container, so the sticky header works */
+  overflow: clip;
   /* Figma's line breaker tolerates sub-pixel overflow; this tiny slack makes
      the browser break lines at the same words as the design */
   word-spacing: -0.02px;
@@ -504,25 +508,28 @@ button:focus-visible {
   opacity: 1;
 }
 
-/* 2. Premium Subtle Page Enter Transition (Content gently settles in) */
-@keyframes contentEnter {
-  0% {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* 2. Page switching — native cross-document View Transitions.
+   The old page stays on screen until the new one is ready, then the two
+   cross-fade. The header is identical on every page, so it stays still.
+   Browsers without support simply switch pages instantly (no flash, because
+   the canvas is burgundy). Never animate .page itself: a transform/opacity
+   animation on it re-renders the header and breaks position: sticky. */
+@view-transition {
+  navigation: auto;
 }
 
-.page {
-  animation: contentEnter 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.25s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .page, .page-progress-bar {
-    animation: none !important;
+  @view-transition {
+    navigation: none;
+  }
+
+  .page-progress-bar {
     transition: none !important;
   }
 }
@@ -624,7 +631,10 @@ button:focus-visible {
 
 .d-header-liquid .d-nav a.is-active {
   color: #fff;
-  font-weight: 600;
+  /* same weight as the other links so the menu never shifts between pages;
+     a hairline stroke gives the active item its emphasis */
+  font-weight: 500;
+  -webkit-text-stroke: 0.35px currentColor;
   background: rgba(255, 255, 255, 0.18);
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35);
 }

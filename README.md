@@ -48,6 +48,18 @@ assets/img/         photos (optimised JPG/WebP) and SVG icons exported from Figm
 assets/fonts/       Readex Pro woff2
 ```
 
+## Header and page switching
+
+- **One header per page**, identical on every page (`index.html`, `programs.html`): the
+  sticky liquid-glass bar on desktop and the glass bottom bar on mobile. Keep their markup
+  the same on every page; only the `is-active` link changes.
+- **Page switching** uses native cross-document View Transitions (`@view-transition` in
+  `css/base.css`): the current page stays visible until the next one is ready, then they
+  cross-fade, so the header never flickers. Browsers without support switch instantly.
+  The page canvas is burgundy so no pale frame can appear while loading.
+- Do **not** animate or `transform` `.page`, and keep its `overflow: clip` — a transform or
+  `overflow: hidden` there breaks the sticky header.
+
 ## Interactions
 
 - Every play button opens its YouTube video in a lightbox (`data-yt="<video id>"`):

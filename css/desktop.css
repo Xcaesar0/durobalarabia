@@ -193,12 +193,11 @@
   color: var(--text-inverse);
 }
 
-/* Widgets with fixed internal geometry (button, captions, header) keep their
+/* Widgets with fixed internal geometry (button, captions) keep their
    Figma px values and are scaled as a unit; their offsets are divided by the
    scale because zoom also applies to left/top. */
 .d-hero__cta,
-.d-caption,
-.d-header {
+.d-caption {
   zoom: var(--zd);
   z-index: 3;
 }
@@ -222,17 +221,7 @@
   white-space: nowrap;
 }
 
-/* Header (integrated nav) */
-.d-header {
-  left: 120px;
-  top: 40px;
-  width: 1200px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
+/* Header contents (used inside the sticky liquid-glass header) */
 .d-header__side {
   display: flex;
   align-items: center;
@@ -2366,13 +2355,6 @@
   padding: 170px 120px 85px;
   position: relative;
   background: transparent;
-}
-
-.d-progs-hero-sec .d-header {
-  position: absolute;
-  left: 120px;
-  top: 40px;
-  width: 1200px;
 }
 
 .d-progs-hero__content {
