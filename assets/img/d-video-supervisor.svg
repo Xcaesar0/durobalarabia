@@ -1,0 +1,41 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="1016" height="676" viewBox="0 0 1016 676" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Video / Supervisor explains the program" filter="url(#filter0_d_0_5)">
+<g clip-path="url(#clip0_0_5)">
+<g id="Photo &#226;&#128;&#148; Rectangle-22.png (video poster &#226;&#128;&#148; set real still)">
+<rect width="900" height="560" transform="translate(58 28)" fill="url(#paint0_linear_0_5)"/>
+</g>
+<rect id="Scrim" x="58" y="328" width="900" height="260" fill="url(#paint1_linear_0_5)"/>
+<circle id="Play / ring" cx="508" cy="308" r="74.25" stroke="#FBF8F3" stroke-width="1.5"/>
+<circle id="Play / button" cx="508" cy="308" r="54" fill="#FBF8F3"/>
+<g id="Icon / play">
+<path id="Vector" d="M497 291.5L522.667 308L497 324.5V291.5Z" stroke="#C8202F" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<rect id="Scrubber / track" x="98" y="536" width="820" height="3" fill="#FBF8F3"/>
+<rect id="Scrubber / played" x="668" y="536" width="250" height="3" fill="#C8202F"/>
+<circle id="Scrubber / knob" cx="667.5" cy="537.5" r="6.5" fill="#C8202F"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_0_5" x="0" y="0" width="1016" height="676" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="12" operator="erode" in="SourceAlpha" result="effect1_dropShadow_0_5"/>
+<feOffset dy="30"/>
+<feGaussianBlur stdDeviation="35"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.1 0 0 0 0 0 0 0 0 0 0.02 0 0 0 0.45 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_5"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_5" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear_0_5" x1="-75.348" y1="31.0672" x2="162.42" y2="607.731" gradientUnits="userSpaceOnUse">
+<stop stop-color="#8A1C24"/>
+<stop offset="1" stop-color="#2C070B"/>
+</linearGradient>
+<linearGradient id="paint1_linear_0_5" x1="508" y1="328" x2="508" y2="588" gradientUnits="userSpaceOnUse">
+<stop stop-color="#2C070B" stop-opacity="0"/>
+<stop offset="1" stop-color="#2C070B" stop-opacity="0.8"/>
+</linearGradient>
+<clipPath id="clip0_0_5">
+<rect width="900" height="560" fill="white" transform="translate(58 28)"/>
+</clipPath>
+</defs>
+</svg>

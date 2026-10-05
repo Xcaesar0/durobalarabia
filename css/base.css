@@ -1,0 +1,380 @@
+/* ==========================================================================
+   دروب العربية — Base: design tokens (from Figma "00 — Foundations"),
+   reset, typography helpers and the responsive scaling engine.
+   ========================================================================== */
+
+/* Readex Pro (variable 160–700, SIL Open Font License) — self-hosted */
+@font-face {
+  font-family: "Readex Pro";
+  font-style: normal;
+  font-weight: 160 700;
+  font-display: swap;
+  src: url("../assets/fonts/readex-pro-arabic.woff2") format("woff2");
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC;
+}
+
+@font-face {
+  font-family: "Readex Pro";
+  font-style: normal;
+  font-weight: 160 700;
+  font-display: swap;
+  src: url("../assets/fonts/readex-pro-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Readex Pro";
+  font-style: normal;
+  font-weight: 160 700;
+  font-display: swap;
+  src: url("../assets/fonts/readex-pro-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  /* Brand */
+  --brand-primary: #c8202f;
+  --brand-secondary: #c8202f;
+  --action-primary: #c8202f;
+
+  /* Backgrounds */
+  --background-primary: #fbf8f3;
+  --background-secondary: #f5f0e8;
+  --background-elevated: #ffffff;
+  --background-inverse: #4a0c12;
+
+  /* Text */
+  --text-primary: #1f1b17;
+  --text-secondary: #4f4840;
+  --text-muted: #6e6557;
+  --text-brand: #c8202f;
+  --text-accent: #a81a27;
+  --text-inverse: #fbf8f3;
+  --text-inverse-muted: #fadcde;
+  --text-on-action: #ffffff;
+
+  /* Borders */
+  --border-subtle: #eae3d7;
+  --border-default: #d9d0c0;
+  --border-strong: #8f8574;
+
+  /* Palette */
+  --sand-200: #eae3d7;
+  --sand-300: #d9d0c0;
+  --terracotta-200: #f4b3b8;
+  --terracotta-300: #ea858d;
+  --teal-400: #e0606c;
+  --teal-600: #d12a39;
+  --teal-800: #9b1824;
+  --teal-950: #2c070b;
+
+  /* Type scale */
+  --size-display-xl: 88px;
+  --size-display-l: 64px;
+  --size-heading-h1: 48px;
+  --size-heading-h2: 36px;
+  --size-heading-h3: 28px;
+  --size-heading-h4: 22px;
+  --size-body-large: 21px;
+  --size-body-regular: 18px;
+  --size-body-small: 15px;
+  --size-label-large: 16px;
+  --size-label-regular: 14px;
+
+  /* Scale factor written by js/scale.js (page width / design width) */
+  --zd: 1;
+  --zm: 1;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Readex Pro", system-ui, sans-serif;
+  font-variation-settings: "HEXP" 0;
+  color: var(--text-primary);
+  background: var(--background-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+figure,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* ---------- Canvas: the pages are laid out at their Figma frame width
+   (1440 desktop / 390 mobile) and scaled with `zoom` to the viewport,
+   so every screen looks exactly like the Figma frame. ---------- */
+
+.page {
+  position: relative;
+  direction: ltr; /* geometry follows Figma's x/y; text runs RTL below */
+  overflow: hidden;
+  /* Figma's line breaker tolerates sub-pixel overflow; this tiny slack makes
+     the browser break lines at the same words as the design */
+  word-spacing: -0.02px;
+}
+
+.page :is(p, h1, h2, h3, h4, span, li, blockquote, label, strong, em, figcaption) {
+  direction: rtl;
+}
+
+.page--desktop {
+  width: 1440px;
+  zoom: var(--zd);
+  margin-inline: auto;
+}
+
+.page--mobile {
+  width: 390px;
+  zoom: var(--zm);
+  margin-inline: auto;
+  display: none;
+}
+
+@media (max-width: 1023.98px) {
+  .page--desktop {
+    display: none;
+  }
+
+  .page--mobile {
+    display: block;
+  }
+}
+
+/* Generic building blocks */
+.a {
+  position: absolute;
+}
+
+.rel {
+  position: relative;
+}
+
+.sec {
+  position: relative;
+  overflow: hidden;
+}
+
+.cover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.fill {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.tr {
+  text-align: right;
+}
+
+.tc {
+  text-align: center;
+}
+
+/* Font weights */
+.w3 { font-weight: 300; }
+.w4 { font-weight: 400; }
+.w5 { font-weight: 500; }
+.w6 { font-weight: 600; }
+
+/* Primary button (Figma component "Button", Primary) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 56px;
+  padding: 0 32px;
+  border-radius: 8px;
+  font-size: var(--size-label-large);
+  font-weight: 500;
+  line-height: 1.5;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn--primary {
+  background: var(--action-primary);
+  color: var(--text-on-action);
+}
+
+.btn--primary:hover {
+  background: #a81a27;
+}
+
+.btn--primary:active {
+  transform: translateY(1px);
+}
+
+.btn:focus-visible,
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--terracotta-300);
+  outline-offset: 3px;
+}
+
+/* Horizontal swipe strips (mobile galleries, carousels) */
+.swipe {
+  display: flex;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.swipe::-webkit-scrollbar {
+  display: none;
+}
+
+.swipe > * {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Secondary button (outline) */
+.btn--secondary {
+  border: 1.5px solid var(--brand-primary);
+  color: var(--text-brand);
+  background: transparent;
+}
+
+.btn--secondary:hover {
+  background: var(--brand-primary);
+  color: var(--text-on-action);
+}
+
+/* Video lightbox */
+.vmodal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(20, 3, 6, 0.86);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  animation: vmodal-in 0.2s ease;
+}
+
+.vmodal__box {
+  position: relative;
+  width: min(1100px, 100%);
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+.vmodal__box iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.vmodal__close {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-primary);
+  font-size: 26px;
+  line-height: 40px;
+}
+
+@keyframes vmodal-in {
+  from {
+    opacity: 0;
+  }
+}

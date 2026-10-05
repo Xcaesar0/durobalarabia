@@ -1,0 +1,1724 @@
+/* ==========================================================================
+   Mobile — Homepage / Mobile / 390 (Figma page "01 — Mobile Screens")
+   All geometry is in Figma pixels on a 390px canvas (scaled by --zm).
+   ========================================================================== */
+
+/* Mobile mode of the type-scale variables */
+.page--mobile,
+.m-nav {
+  --size-display-xl: 44px;
+  --size-display-l: 36px;
+  --size-heading-h1: 32px;
+  --size-heading-h2: 28px;
+  --size-heading-h3: 22px;
+  --size-heading-h4: 18px;
+  --size-body-large: 18px;
+  --size-body-regular: 16px;
+  --size-body-small: 14px;
+  --size-label-large: 16px;
+  --size-label-regular: 14px;
+}
+
+@media (max-width: 1023.98px) {
+  body {
+    background: var(--teal-950);
+  }
+}
+
+/* ---------- Mobile Navigation Bar — Liquid Glass (fixed, bottom) ---------- */
+.m-nav {
+  display: none;
+}
+
+@media (max-width: 1023.98px) {
+  .m-nav {
+    position: fixed;
+    z-index: 50;
+    left: 0;
+    right: 0;
+    bottom: calc(22px + env(safe-area-inset-bottom, 0px));
+    width: 367px;
+    height: 72px;
+    margin-inline: auto;
+    zoom: var(--zm);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 8px 8px 15px;
+    border: 1.25px solid rgba(255, 255, 255, 0.75);
+    border-radius: 36px;
+    background: linear-gradient(rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.12)), rgba(74, 12, 18, 0.32);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    backdrop-filter: blur(14px) saturate(140%);
+    box-shadow: 0 14px 32px -6px rgba(26, 5, 8, 0.35), inset 0 1.5px 1px rgba(255, 255, 255, 0.4),
+      inset 0 -8px 14px rgba(255, 255, 255, 0.14);
+  }
+}
+
+.m-nav__item {
+  position: relative;
+  width: 66px;
+  height: 56px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  border-radius: 28px;
+  border: 1px solid transparent;
+  color: var(--text-inverse);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.5;
+  white-space: nowrap;
+  text-align: center;
+  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.m-nav__item--wide {
+  width: 69px;
+}
+
+.m-nav__item img {
+  width: 24px;
+  height: 24px;
+}
+
+.m-nav__item img.m-nav__trophy {
+  width: 24.875px;
+  height: 24.875px;
+  margin: -0.875px 0 0 -0.875px;
+}
+
+.m-nav__item span {
+  direction: rtl;
+}
+
+.m-nav__item.is-active {
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.18), inset 0 1px 2px rgba(255, 255, 255, 0.45);
+}
+
+/* ---------- 01 · Hero / Immersive scene ---------- */
+.m-hero {
+  height: 844px;
+  background: var(--background-inverse);
+}
+
+.m-hero__backdrop {
+  left: -30px;
+  top: -30px;
+  width: 450px;
+  height: 900px;
+  filter: blur(13px);
+}
+
+.m-hero__tint {
+  inset: 0;
+  background: var(--background-inverse);
+  opacity: 0.72;
+}
+
+.m-hero__photo {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 16px 34px -6px rgba(13, 0, 3, 0.5);
+}
+
+.m-hero__scrim-b {
+  left: 0;
+  top: 250px;
+  width: 390px;
+  height: 594px;
+  background: linear-gradient(to bottom, rgba(74, 12, 18, 0) 0%, rgba(74, 12, 18, 0.88) 55%, #4a0c12 100%);
+}
+
+.m-hero__scrim-t {
+  left: 0;
+  top: 0;
+  width: 390px;
+  height: 150px;
+  background: linear-gradient(to bottom, rgba(44, 7, 11, 0.65), rgba(44, 7, 11, 0));
+}
+
+.m-hero__pager {
+  left: 20px;
+  top: 64px;
+  display: flex;
+  gap: 6px;
+}
+
+.m-hero__pager i {
+  display: block;
+  height: 3px;
+  background: var(--text-inverse);
+}
+
+.m-hero__content {
+  left: 20px;
+  top: 257px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.m-hero__h1 {
+  width: 350px;
+  font-size: var(--size-display-xl);
+  line-height: 1.25;
+  color: var(--text-inverse);
+}
+
+/* second headline line keeps its own size/colour; the 16px flex gap is
+   recreated with a margin because both lines live in one <h1> */
+.m-hero__h1b {
+  display: block;
+  margin-top: 16px;
+  font-size: var(--size-display-l);
+  line-height: 1.28;
+  color: var(--terracotta-200);
+}
+
+.m-hero__intro {
+  width: 350px;
+  font-size: var(--size-body-small);
+  line-height: 1.5;
+  color: var(--text-inverse-muted);
+}
+
+.m-hero__emph {
+  width: 350px;
+  font-size: var(--size-body-large);
+  line-height: 1.8;
+  color: var(--text-inverse);
+}
+
+/* ---------- 02 · Bridge ---------- */
+.m-bridge {
+  height: 80px;
+}
+
+.m-bridge img {
+  width: 390px;
+  height: 80px;
+}
+
+/* shared: vertical brand trail line */
+.m-trail {
+  width: 2px;
+  background: var(--brand-secondary);
+}
+
+/* ---------- 03 · Listen & Watch ---------- */
+.m-listen {
+  height: 676px;
+  background: var(--background-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 32px;
+  padding: 8px 0 56px;
+  overflow: visible;
+}
+
+.m-listen__head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 0 48px 0 20px;
+}
+
+.m-listen__title {
+  width: 322px;
+  font-size: var(--size-display-l);
+  line-height: 1.28;
+  color: var(--text-accent);
+}
+
+.m-listen__sub {
+  width: 322px;
+  font-size: var(--size-heading-h3);
+  line-height: 1.45;
+  color: var(--text-primary);
+}
+
+.m-listen__video {
+  position: relative;
+  display: block;
+  width: 390px;
+  height: 430px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* poster placeholder (the Figma file still uses an empty "Rectangle-22.png");
+   uses the same still treatment as the desktop video until a real still is set */
+.m-listen__poster {
+  left: 22px;
+  top: 0;
+  width: 346px;
+  height: 430px;
+  background: linear-gradient(158deg, #8a1c24 0%, #2c070b 100%);
+}
+
+.m-listen__scrim {
+  left: 22px;
+  top: 230px;
+  width: 346px;
+  height: 200px;
+  background: linear-gradient(to bottom, rgba(44, 7, 11, 0), rgba(44, 7, 11, 0.75));
+}
+
+.m-listen__track {
+  left: 42px;
+  top: 396px;
+  width: 306px;
+  height: 3px;
+  background: var(--text-inverse);
+}
+
+.m-listen__played {
+  left: 256px;
+  top: 396px;
+  width: 92px;
+  height: 3px;
+  background: var(--brand-secondary);
+}
+
+/* ---------- 04 · Academy intro ---------- */
+.m-academy {
+  height: 474px;
+  background: var(--background-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 24px;
+  padding: 64px 20px;
+  overflow: visible;
+}
+
+.m-academy__title {
+  width: 350px;
+  font-size: var(--size-heading-h1);
+  line-height: 1.32;
+  color: var(--text-brand);
+}
+
+.m-academy__text {
+  width: 350px;
+  font-size: var(--size-body-large);
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.m-academy__text strong {
+  color: var(--text-accent);
+}
+
+.m-academy__link {
+  width: 350px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.m-academy__link img {
+  width: 28px;
+  height: 28px;
+}
+
+.m-academy__rule {
+  flex: 1 0 0;
+  height: 1px;
+  background: var(--border-strong);
+}
+
+/* ---------- 05 · Features (cards) ---------- */
+.m-features {
+  background: var(--background-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 40px 20px 56px;
+  overflow: visible;
+}
+
+.mf {
+  width: 350px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+  padding: 20px;
+  border-radius: 16px;
+  overflow: hidden;
+  text-align: right;
+}
+
+.mf--accent {
+  background: var(--brand-primary);
+}
+
+.mf--dark {
+  background: var(--background-inverse);
+}
+
+.mf--card {
+  background: var(--background-elevated);
+  /* Figma stroke sits inside and takes no layout space → inset shadow */
+  box-shadow: inset 0 0 0 1px var(--border-subtle), 0 4px 12px rgba(31, 27, 23, 0.06),
+    0 1px 2px rgba(31, 27, 23, 0.06);
+}
+
+.mf--compact {
+  width: 169px;
+  gap: 12px;
+  padding: 16px;
+  align-self: stretch;
+}
+
+.mf-pair {
+  width: 350px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.mf__top {
+  width: 310px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mf__top--compact {
+  width: 137px;
+}
+
+.mf__idx {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--size-label-regular);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text-inverse-muted);
+  white-space: nowrap;
+}
+
+.mf__idx--compact {
+  gap: 8px;
+  color: var(--text-muted);
+}
+
+.mf__idx span:first-child {
+  direction: ltr;
+}
+
+.mf__chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.mf__chip--glass {
+  width: 44px;
+  height: 44px;
+  background: rgba(251, 248, 243, 0.16);
+}
+
+.mf__chip--subtle {
+  width: 36px;
+  height: 36px;
+  background: var(--brand-primary-subtle, #fdf0f1);
+}
+
+.mf__chip--subtle img {
+  width: 18px;
+  height: 18px;
+}
+
+.mf__arrow {
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
+  border: 1px solid var(--border-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mf__arrow img {
+  width: 18px;
+  height: 18px;
+}
+
+.mf__arrow--light {
+  border-color: var(--text-inverse-muted);
+}
+
+.mf__arrow--sm {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+}
+
+.mf__arrow--sm img {
+  width: 16px;
+  height: 16px;
+}
+
+.mf__panel {
+  width: 310px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: var(--brand-primary-subtle, #fdf0f1);
+}
+
+.mf__num {
+  font-size: 64px;
+  line-height: 1;
+  color: var(--terracotta-200);
+  white-space: nowrap;
+  direction: ltr !important;
+}
+
+.mf__bigicon {
+  width: 68px;
+  height: 68px;
+  border-radius: 34px;
+  background: var(--background-elevated);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mf__bigicon img {
+  width: 32px;
+  height: 32px;
+}
+
+.mf__linkrow {
+  width: 310px;
+  display: flex;
+  align-items: center;
+}
+
+.mf__title {
+  width: 310px;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
+.mf__title--h3 {
+  font-size: var(--size-heading-h3);
+  color: var(--text-inverse);
+}
+
+.mf__title--h4 {
+  font-size: var(--size-heading-h4);
+}
+
+.mf__title--sm {
+  width: 137px;
+  font-size: 16px;
+}
+
+.mf__text {
+  width: 310px;
+  color: var(--text-secondary);
+}
+
+.mf__text--reg {
+  font-size: var(--size-body-regular);
+  line-height: 1.7;
+}
+
+.mf--accent .mf__text,
+.mf--dark .mf__text {
+  color: var(--text-inverse-muted);
+}
+
+.mf__text--sm {
+  width: 137px;
+  font-size: var(--size-body-small);
+  line-height: 1.6;
+}
+
+/* ---------- 06 · CTA / سجل الان (1) ---------- */
+.m-cta1 {
+  height: 196px;
+  background: var(--brand-secondary-strong, #a81a27);
+  padding: 64px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  overflow: visible;
+}
+
+.m-cta1__row {
+  width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.m-cta1__btn {
+  width: 68px;
+  height: 68px;
+  border-radius: 34px;
+  background: var(--background-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.m-cta1__btn img {
+  width: 28px;
+  height: 28px;
+}
+
+.m-cta1__row:active .m-cta1__btn {
+  transform: scale(0.96);
+}
+
+.m-cta1__text {
+  font-size: var(--size-display-l);
+  line-height: 1.28;
+  color: var(--text-on-action);
+  white-space: nowrap;
+}
+
+/* ---------- 08 · Detailed program in Jordan ---------- */
+.m-program {
+  height: 714.875px;
+  background: var(--background-inverse);
+  padding: 80px 20px 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  overflow: visible;
+}
+
+.m-program__h {
+  display: contents;
+}
+
+.m-program__h > span {
+  display: block;
+  width: 350px;
+}
+
+.m-program__kicker {
+  font-size: var(--size-heading-h1);
+  line-height: 1.32;
+  color: var(--text-inverse-muted);
+}
+
+.m-program__big {
+  font-size: 72px;
+  line-height: 1.15;
+}
+
+.m-program__route {
+  width: 350px;
+  height: 46px;
+}
+
+.m-program__spacer {
+  display: block;
+  width: 1px;
+  height: 28px;
+}
+
+.m-program__video {
+  display: block;
+  width: 350px;
+  height: 196.875px;
+  border: 1px solid var(--brand-secondary);
+  border-radius: 8px;
+  background: #2a2a2a;
+  overflow: hidden;
+}
+
+.m-program__surface {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #2c070b;
+}
+
+.m-program__surface img {
+  width: 104px;
+  height: 104px;
+}
+
+/* ---------- 09 · Jordan adventures (swipe gallery) ---------- */
+.m-pad {
+  width: 390px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+.m-adv {
+  height: 720px;
+  background: var(--teal-950);
+  padding: 56px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 28px;
+  overflow: visible;
+}
+
+.m-adv__title {
+  width: 350px;
+  font-size: var(--size-heading-h1);
+  line-height: 1.32;
+  color: var(--text-inverse);
+}
+
+.m-adv__viewport {
+  width: 390px;
+  height: 440px;
+  flex-shrink: 0;
+  direction: rtl;
+  scroll-snap-type: x mandatory;
+}
+
+.m-adv__rail {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  padding: 0 20px;
+}
+
+.mdest {
+  position: relative;
+  width: 270px;
+  height: 440px;
+  flex-shrink: 0;
+  overflow: hidden;
+  scroll-snap-align: start;
+  scroll-margin-inline: 20px;
+  direction: ltr;
+}
+
+.mdest__scrim {
+  left: 0;
+  top: 180px;
+  width: 270px;
+  height: 260px;
+  background: linear-gradient(to bottom, rgba(44, 7, 11, 0), rgba(44, 7, 11, 0.82));
+}
+
+.mdest__n {
+  right: 18px;
+  top: 18px;
+  font-size: var(--size-label-regular);
+  line-height: 1.5;
+  color: var(--text-inverse);
+  direction: ltr !important;
+}
+
+.mdest__play {
+  left: 18px;
+  top: 374px;
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  background: var(--background-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mdest__play img {
+  width: 22px;
+  height: 22px;
+}
+
+.mdest__name {
+  right: 18px;
+  top: 386px;
+  width: 190px;
+  font-size: var(--size-heading-h3);
+  line-height: 1.45;
+  color: var(--text-inverse);
+  text-align: right;
+}
+
+.m-pager {
+  width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.m-pager__next img {
+  width: 28px;
+  height: 28px;
+}
+
+/* RTL so the first segment (= first card) sits at the right */
+.m-pager__segs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  direction: rtl;
+}
+
+.m-pager__segs i {
+  display: block;
+  width: 14px;
+  height: 3px;
+  background: var(--teal-600);
+  transition: width 0.25s ease, background-color 0.25s ease;
+}
+
+.m-pager__segs i.is-active {
+  width: 36px;
+  background: var(--brand-secondary);
+}
+
+/* shared: footer row + "المزيد" link */
+.m-footrow {
+  width: 350px;
+  display: flex;
+  align-items: center;
+  padding-top: 8px;
+}
+
+.m-more {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--size-label-regular);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text-brand);
+  white-space: nowrap;
+}
+
+.m-more img {
+  width: 20px;
+  height: 20px;
+}
+
+.m-more--pink {
+  color: var(--terracotta-200);
+}
+
+/* ---------- 10 · Articles (editorial) ---------- */
+.m-articles {
+  height: 1314px;
+  background: var(--background-primary);
+  padding: 72px 0 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 28px;
+  overflow: visible;
+}
+
+.m-articles__title {
+  width: 350px;
+  font-size: var(--size-display-l);
+  line-height: 1.28;
+  color: var(--text-brand);
+}
+
+.m-articles__photo {
+  width: 390px;
+  height: 250px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.m-articles__lead {
+  gap: 12px;
+}
+
+.m-articles__date {
+  font-size: var(--size-label-large);
+  line-height: 1.5;
+  color: var(--text-accent);
+  white-space: nowrap;
+}
+
+.m-articles__ltitle {
+  width: 350px;
+  font-size: var(--size-heading-h2);
+  line-height: 1.38;
+  color: var(--text-primary);
+}
+
+.m-articles__lexcerpt {
+  width: 350px;
+  font-size: var(--size-body-regular);
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.m-art {
+  position: relative;
+  width: 350px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 0;
+}
+
+.m-art::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 350px;
+  height: 1px;
+  background: var(--border-default);
+}
+
+.m-art__img {
+  width: 96px;
+  height: 132px;
+  border-radius: 15px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.m-art__text {
+  flex: 1 0 0;
+  min-width: 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.m-art__date {
+  font-size: var(--size-label-regular);
+  line-height: 1.5;
+  color: var(--text-accent);
+  white-space: nowrap;
+}
+
+.m-art__title {
+  width: 238px;
+  font-size: var(--size-heading-h4);
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.m-art__excerpt {
+  width: 238px;
+  font-size: var(--size-body-small);
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* ---------- 11 · Camp companions (portrait wall) ---------- */
+.m-companions {
+  height: 995px;
+  background: var(--background-inverse);
+  padding: 72px 20px 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 32px;
+  overflow: visible;
+}
+
+.m-companions__title {
+  width: 350px;
+  font-size: var(--size-heading-h1);
+  line-height: 1.32;
+  color: var(--text-inverse);
+}
+
+.m-companions__wall {
+  width: 350px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.m-companions__col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.m-comp {
+  position: relative;
+  margin: 0;
+  width: 167px;
+  overflow: hidden;
+}
+
+.m-comp__scrim {
+  left: 0;
+  width: 167px;
+  height: 90px;
+  background: linear-gradient(to bottom, rgba(44, 7, 11, 0), rgba(44, 7, 11, 0.8));
+}
+
+.m-comp__name {
+  right: 14px;
+  width: 140px;
+  font-size: var(--size-label-large);
+  line-height: 1.5;
+  color: var(--text-inverse);
+}
+
+/* ---------- 12 · Guidebook (artifact) ---------- */
+.m-book {
+  height: 690px;
+  background: var(--background-secondary);
+  padding: 72px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  overflow: visible;
+}
+
+.m-book__surface {
+  width: 350px;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--sand-200);
+}
+
+.m-book__cover {
+  position: relative;
+  width: 210px;
+  height: 296px;
+  filter: drop-shadow(0 12px 16px rgba(31, 27, 23, 0.14));
+}
+
+.m-book__cover img {
+  position: absolute;
+  left: 21px;
+  top: 1px;
+  width: 168px;
+  height: 293px;
+  object-fit: cover;
+}
+
+.m-book__link {
+  width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding-bottom: 12px;
+  font-size: var(--size-label-large);
+  line-height: 1.5;
+  color: var(--text-accent);
+  white-space: nowrap;
+}
+
+.m-book__link img {
+  width: 22px;
+  height: 22px;
+}
+
+.m-book__title {
+  width: 350px;
+  font-size: var(--size-heading-h2);
+  line-height: 1.38;
+  color: var(--text-primary);
+}
+
+/* ---------- 13 · Learning & culture intro (pull-statement) ---------- */
+.m-pull {
+  height: 398px;
+  background: var(--background-primary);
+  padding: 72px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+  overflow: visible;
+}
+
+.m-pull__rule {
+  left: 20px;
+  top: 0;
+  width: 350px;
+  height: 1px;
+  background: var(--border-strong);
+}
+
+.m-pull__h {
+  width: 350px;
+  font-size: var(--size-heading-h4);
+  line-height: 1.5;
+  color: var(--text-brand);
+}
+
+.m-pull__p {
+  width: 350px;
+  font-size: var(--size-body-large);
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.m-pull__quote {
+  width: 350px;
+  font-size: var(--size-display-l);
+  line-height: 1.3;
+  color: var(--text-accent);
+}
+
+/* ---------- 14 · Support & strategy (ledger) ---------- */
+.m-support {
+  height: 1103px;
+  background: var(--background-inverse);
+  padding: 80px 20px 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 36px;
+  overflow: visible;
+}
+
+.m-support__title {
+  width: 350px;
+  font-size: var(--size-heading-h1);
+  line-height: 1.32;
+  color: var(--text-inverse);
+}
+
+.m-ledger {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+.m-support .m-ledger__row {
+  position: relative;
+  width: 350px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 22px 0;
+  direction: ltr;
+}
+
+.m-ledger__row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 350px;
+  height: 1px;
+  background: var(--teal-700, #c8202f);
+}
+
+.m-ledger__t {
+  width: 282px;
+  flex-shrink: 0;
+  line-height: 1.5;
+  color: var(--text-inverse);
+  text-align: right;
+}
+
+.m-ledger__t em {
+  font-style: normal;
+  color: var(--terracotta-200);
+}
+
+.m-ledger__n {
+  width: 34px;
+  flex-shrink: 0;
+  font-size: var(--size-label-large);
+  line-height: 1.5;
+  color: var(--terracotta-300);
+  text-align: right;
+}
+
+.m-ledger__n--lg {
+  font-size: var(--size-heading-h3);
+  line-height: 1.45;
+}
+
+.m-support__btn {
+  width: 100%;
+}
+
+/* ---------- 15 · Our success continues (statistics) ---------- */
+.m-stats {
+  height: 1322px;
+  background: var(--background-primary);
+  padding: 80px 20px 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 28px;
+  overflow: visible;
+}
+
+.m-stats__title {
+  width: 350px;
+  font-size: var(--size-heading-h1);
+  line-height: 1.32;
+  color: var(--text-brand);
+}
+
+.m-stats__spacer {
+  display: block;
+  width: 1px;
+  height: 24px;
+}
+
+.m-stat {
+  position: relative;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 20px 0 28px;
+  white-space: nowrap;
+}
+
+.m-stat::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 350px;
+  height: 1px;
+  background: var(--border-default);
+}
+
+.m-stat__value {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.m-stat__plus {
+  font-size: 56px;
+  line-height: normal;
+  color: var(--brand-secondary);
+}
+
+.m-stat__n {
+  font-size: 96px;
+  line-height: 1;
+  color: var(--text-brand);
+  direction: ltr !important;
+}
+
+.m-stat__l {
+  font-size: var(--size-heading-h2);
+  line-height: 1.38;
+  color: var(--text-primary);
+}
+
+.m-stat__s {
+  font-size: var(--size-body-regular);
+  line-height: 1.82;
+  color: var(--text-muted);
+}
+
+/* ---------- 16 · Team (swipe strip) ---------- */
+.m-team {
+  height: 540px;
+  background: var(--background-secondary);
+  padding: 72px 0 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 28px;
+  overflow: visible;
+}
+
+.m-team__title {
+  width: 350px;
+  font-size: var(--size-display-l);
+  line-height: 1.28;
+  color: var(--text-brand);
+}
+
+.m-team__viewport {
+  width: 390px;
+  height: 330px;
+  flex-shrink: 0;
+  direction: rtl;
+  scroll-snap-type: x mandatory;
+}
+
+.m-team__rail {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  padding: 0 20px;
+}
+
+.m-tm {
+  width: 190px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* RTL start = right */
+  gap: 12px;
+  scroll-snap-align: start;
+  scroll-margin-inline: 20px;
+}
+
+.m-tm__photo {
+  display: block;
+  width: 190px;
+  height: 250px;
+}
+
+.m-tm i {
+  display: block;
+}
+
+.m-tm__name {
+  width: 130px;
+  height: 12px;
+  background: var(--sand-300);
+}
+
+.m-tm__role {
+  width: 90px;
+  height: 10px;
+  background: var(--sand-200);
+}
+
+/* ---------- 17 · Jordan 2023 trip video ---------- */
+.m-trip {
+  height: 700px;
+  background: var(--teal-950);
+}
+
+.m-trip__poster {
+  background-image: linear-gradient(130.06deg, #dc5460 0%, #9b1824 72.464%);
+}
+
+.m-trip__scrim-t {
+  left: 0;
+  top: 0;
+  width: 390px;
+  height: 330px;
+  background: linear-gradient(to bottom, rgba(44, 7, 11, 0.78), rgba(44, 7, 11, 0));
+}
+
+.m-trip__scrim-b {
+  left: 0;
+  top: 340px;
+  width: 390px;
+  height: 360px;
+  background: linear-gradient(to bottom, rgba(44, 7, 11, 0), rgba(44, 7, 11, 0.9));
+}
+
+.m-trip__heads {
+  left: 20px;
+  top: 72px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.m-trip__kicker {
+  width: 350px;
+  font-size: var(--size-heading-h3);
+  line-height: 1.45;
+  color: var(--text-inverse-muted);
+}
+
+.m-trip__big {
+  width: 350px;
+  font-size: 60px;
+  line-height: 1.1;
+}
+
+.m-trip__play {
+  left: 131px;
+  top: 340px;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+}
+
+.m-trip__track {
+  left: 0;
+  top: 697px;
+  width: 390px;
+  height: 3px;
+  background: var(--text-inverse);
+}
+
+.m-trip__played {
+  left: 260px;
+  top: 697px;
+  width: 130px;
+  height: 3px;
+  background: var(--brand-secondary);
+}
+
+/* ---------- 18 · Testimonials (focus + swipe) ---------- */
+.m-testi {
+  height: 1031px;
+  background: var(--background-primary);
+  padding: 72px 0 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 32px;
+  overflow: visible;
+}
+
+.m-testi__title {
+  width: 350px;
+  font-size: var(--size-display-l);
+  line-height: 1.28;
+  color: var(--text-brand);
+}
+
+.m-testi__viewport {
+  width: 390px;
+  height: 734px;
+  flex-shrink: 0;
+  direction: rtl;
+  scroll-snap-type: x mandatory;
+}
+
+.m-testi__rail {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: max-content;
+  padding: 0 20px;
+}
+
+.m-tq {
+  position: relative;
+  margin: 0;
+  width: 310px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* RTL start = right */
+  gap: 18px;
+  scroll-snap-align: start;
+  scroll-margin-inline: 20px;
+  text-align: right;
+}
+
+.m-tq__photo {
+  position: relative;
+  width: 310px;
+  height: 300px;
+  flex-shrink: 0;
+}
+
+.m-tq__photo--lg {
+  height: 340px;
+}
+
+.m-tq__mark {
+  left: 238px;
+  width: 56px;
+  height: 56px;
+  border-radius: 28px;
+  background: var(--brand-secondary);
+  color: var(--text-on-action);
+  font-size: 44px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  direction: ltr !important;
+}
+
+.m-tq__spacer {
+  display: block;
+  width: 1px;
+  height: 16px;
+}
+
+.m-tq__text {
+  width: 310px;
+  line-height: 1.65;
+  color: var(--text-primary);
+}
+
+.m-tq__by {
+  width: 310px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  line-height: 1.5;
+}
+
+.m-tq__name {
+  font-size: var(--size-heading-h4);
+  color: var(--text-brand);
+}
+
+.m-tq__role {
+  font-size: var(--size-label-regular);
+  color: var(--text-muted);
+}
+
+.m-testi__pager {
+  width: 390px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.m-pager__segs--sand i {
+  background: var(--sand-300);
+}
+
+.m-testi__all {
+  width: 390px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  font-size: var(--size-label-large);
+  line-height: 1.5;
+  color: var(--text-accent);
+  white-space: nowrap;
+}
+
+.m-testi__all img {
+  width: 24px;
+  height: 24px;
+}
+
+/* ---------- 19 · Final registration ---------- */
+.m-register {
+  height: 294px;
+  background: var(--teal-950);
+}
+
+.m-register__bg {
+  left: 0;
+  top: 0;
+  width: 390px;
+  height: 560px;
+  background-image: linear-gradient(136.42deg, #dc5460 0%, #4a0c12 72.464%);
+}
+
+.m-register__trail {
+  left: 368px;
+  top: 0;
+  width: 2px;
+  height: 113px;
+  background: var(--text-inverse);
+}
+
+.m-register__cta {
+  left: 20px;
+  top: 177px;
+  width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.m-register__btn {
+  width: 72px;
+  height: 72px;
+  border-radius: 36px;
+  background: var(--background-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.m-register__btn img {
+  width: 36px;
+  height: 36px;
+}
+
+.m-register__cta:active .m-register__btn {
+  transform: scale(0.95);
+}
+
+.m-register__text {
+  font-size: 56px;
+  line-height: 1.1;
+  color: var(--text-inverse);
+  white-space: nowrap;
+}
+
+/* ---------- 20 · Footer (quiet) ---------- */
+.m-footer {
+  height: 629px;
+  background: var(--teal-950);
+  padding: 8px 20px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 36px;
+  overflow: visible;
+}
+
+.m-footer__brand {
+  font-size: 30px;
+  line-height: normal;
+  color: var(--text-inverse);
+  white-space: nowrap;
+}
+
+.m-footer__nav {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+.m-footer__link {
+  position: relative;
+  width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  font-size: var(--size-body-large);
+  line-height: 1.8;
+  color: var(--text-inverse);
+  white-space: nowrap;
+}
+
+.m-footer__link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 350px;
+  height: 1px;
+  background: var(--teal-800);
+}
+
+.m-footer__link img {
+  width: 20px;
+  height: 20px;
+}
+
+.m-footer__social {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+}
+
+.m-footer__label {
+  font-size: var(--size-label-regular);
+  line-height: 1.5;
+  color: var(--text-inverse-muted);
+  direction: ltr !important;
+}
+
+.m-footer__links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.m-footer__ext {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--size-label-large);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text-inverse);
+  white-space: nowrap;
+}
+
+.m-footer__ext span {
+  direction: ltr !important;
+}
+
+.m-footer__ext img {
+  width: 18px;
+  height: 18px;
+}
+
+.m-footer__bottom {
+  width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.m-footer__top {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  border: 1.5px solid var(--teal-600);
+}
+
+.m-footer__top img {
+  position: absolute;
+  left: 10.5px;
+  top: 10.5px;
+  width: 24px;
+  height: 24px;
+  transform: rotate(180deg);
+}
+
+.m-footer__lang {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.m-footer__ar {
+  gap: 6px;
+}
+
+.m-footer__ar i {
+  width: 24px;
+}
+
+/* room for the fixed bottom navigation under the footer */
+.page--mobile {
+  padding-bottom: 100px;
+  background: var(--teal-950);
+}
+
+.m-companions .m-footrow {
+  padding-top: 0;
+}
