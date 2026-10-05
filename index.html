@@ -21,62 +21,67 @@
          DESKTOP — Figma page "02 — Desktop Screens" / Homepage / Desktop / 1440
          ===================================================================== -->
     <div class="page page--desktop" id="desktop">
-      <!-- 01 · Hero / Immersive scene + header -->
+      <!-- 01 · Hero / Immersive scene + header
+           Fluid section: full-width background layers + a centred 1440-unit stage.
+           Its vertical rhythm adapts to the viewport height (see .d-hero in desktop.css). -->
       <section class="sec d-hero" id="d-home" aria-label="الرئيسية">
         <div class="a d-hero__backdrop" aria-hidden="true"><img class="cover" src="assets/img/manuscript.jpg" alt="" /></div>
         <div class="a d-hero__tint" aria-hidden="true"></div>
-        <figure class="a d-hero__photo" style="left:233px;top:178px;width:200px;height:310px">
-          <img class="cover" src="assets/img/yarmouk.jpg" alt="منظر طبيعي لمنطقة اليرموك" />
-        </figure>
-        <figure class="a d-hero__photo" style="left:887px;top:127px;width:316px;height:450px">
-          <img class="cover" src="assets/img/irbid.jpg" alt="برج الساعة في إربد" />
-        </figure>
-        <figure class="a d-hero__photo" style="left:417px;top:249px;width:500px;height:310px">
-          <img class="cover" src="assets/img/manuscript.jpg" alt="مخطوطة عربية وكوب شاي" />
-        </figure>
-        <div class="a d-hero__flag" aria-hidden="true"><img src="assets/img/hero-jordan-flag.webp" alt="" /></div>
-        <div class="a d-hero__img2" aria-hidden="true"><img src="assets/img/hero-image2.webp" alt="" /></div>
-        <img class="a d-hero__img1" src="assets/img/hero-image1.webp" alt="" aria-hidden="true" />
         <div class="a d-hero__scrim-b" aria-hidden="true"></div>
         <div class="a d-hero__scrim-t" aria-hidden="true"></div>
-        <div class="a d-hero__rail" aria-hidden="true"></div>
-        <div class="a d-hero__rail d-hero__rail--active" aria-hidden="true"></div>
+        <div class="d-hero__stage">
+          <figure class="a d-hero__photo" style="--x:233;--y:178;--w:200;--h:310">
+            <img class="cover" src="assets/img/yarmouk.jpg" alt="منظر طبيعي لمنطقة اليرموك" />
+          </figure>
+          <figure class="a d-hero__photo" style="--x:887;--y:127;--w:316;--h:450">
+            <img class="cover" src="assets/img/irbid.jpg" alt="برج الساعة في إربد" />
+          </figure>
+          <figure class="a d-hero__photo" style="--x:417;--y:249;--w:500;--h:310">
+            <img class="cover" src="assets/img/manuscript.jpg" alt="مخطوطة عربية وكوب شاي" />
+          </figure>
+          <div class="a d-hero__flag" aria-hidden="true"><img src="assets/img/hero-jordan-flag.webp" alt="" /></div>
+          <div class="a d-hero__img2" aria-hidden="true"><img src="assets/img/hero-image2.webp" alt="" /></div>
+          <img class="a d-hero__img1" src="assets/img/hero-image1.webp" alt="" aria-hidden="true" />
+          <div class="a d-hero__rail" aria-hidden="true"></div>
+          <div class="a d-hero__rail d-hero__rail--active" aria-hidden="true"></div>
 
-        <p class="a d-hero__line2 w6 tr">ونعيش الثقافة الاردنية</p>
-        <div class="a d-hero__intro tr">
-          <p>نحن فخورون بتقديم أفضل مخيم لغوي للطلاب من جميع الأعمار والمستويات. مخيمنا فريد من نوعه لأنه يجمع بين التعليم والترفيه بطريقة ممتعة وتفاعلية.</p>
-          <p>إذا كنت تبحث عن مخيم لغوي يوفر لك تجربة تعليمية غنية وممتعة، فإن مخيمنا هو الخيار الأمثل لك.</p>
-          <p>تذكر أن تعلم اللغة العربية هو استثمار في مستقبلك. ستفتح لك اللغة العربية فرصًا جديدة في التعليم والعمل والترفيه.</p>
-        </div>
-        <p class="a d-hero__emph w5 tr">كن مستعدًا لتجربة أشياء جديدة.</p>
-        <a class="a btn btn--primary" style="left:120px;top:801px" href="tel:+905347308092">الاتصال بنا الان</a>
-
-        <header class="a d-header">
-          <div class="d-header__side">
-            <div class="d-lang">
-              <a href="#" class="d-lang__item" lang="tr">TR</a>
-              <span class="d-lang__item d-lang__item--active" aria-current="true">AR<i></i></span>
-            </div>
-            <a href="#" class="d-glass-btn">الدخول إلى مسابقة النقاط</a>
+          <p class="a d-hero__line2 w6 tr">ونعيش الثقافة الاردنية</p>
+          <div class="a d-hero__intro tr">
+            <p>نحن فخورون بتقديم أفضل مخيم لغوي للطلاب من جميع الأعمار والمستويات. مخيمنا فريد من نوعه لأنه يجمع بين التعليم والترفيه بطريقة ممتعة وتفاعلية.</p>
+            <p>إذا كنت تبحث عن مخيم لغوي يوفر لك تجربة تعليمية غنية وممتعة، فإن مخيمنا هو الخيار الأمثل لك.</p>
+            <p>تذكر أن تعلم اللغة العربية هو استثمار في مستقبلك. ستفتح لك اللغة العربية فرصًا جديدة في التعليم والعمل والترفيه.</p>
           </div>
-          <nav class="d-nav" aria-label="القائمة الرئيسية">
-            <a href="#d-contact">اتصل بنا</a>
-            <a href="#d-program">البرامج</a>
-            <a href="#d-features">المميزات</a>
-            <a href="#d-home" class="is-active" aria-current="page">الرئيسية<i></i></a>
-          </nav>
-          <a href="#d-home" class="d-logo" aria-label="دروب العربية">
-            <span class="w6">دروب العربية</span>
-            <img src="assets/img/logo.png" alt="" width="49" height="56" />
-          </a>
-        </header>
+          <p class="a d-hero__emph w5 tr">كن مستعدًا لتجربة أشياء جديدة.</p>
+          <a class="a btn btn--primary d-hero__cta" href="tel:+905347308092">الاتصال بنا الان</a>
 
-        <span class="a d-caption" style="left:1186px;top:360px">إربد</span>
-        <span class="a d-caption" style="left:180px;top:443px">معركة اليرموك</span>
-        <h1 class="a d-hero__line1 w6 tr">معا نتعلم اللغة<span class="sr-only"> ونعيش الثقافة الاردنية</span></h1>
+          <header class="a d-header">
+            <div class="d-header__side">
+              <div class="d-lang">
+                <a href="#" class="d-lang__item" lang="tr">TR</a>
+                <span class="d-lang__item d-lang__item--active" aria-current="true">AR<i></i></span>
+              </div>
+              <a href="#" class="d-glass-btn">الدخول إلى مسابقة النقاط</a>
+            </div>
+            <nav class="d-nav" aria-label="القائمة الرئيسية">
+              <a href="#d-contact">اتصل بنا</a>
+              <a href="#d-program">البرامج</a>
+              <a href="#d-features">المميزات</a>
+              <a href="#d-home" class="is-active" aria-current="page">الرئيسية<i></i></a>
+            </nav>
+            <a href="#d-home" class="d-logo" aria-label="دروب العربية">
+              <span class="w6">دروب العربية</span>
+              <img src="assets/img/logo.png" alt="" width="49" height="56" />
+            </a>
+          </header>
+
+          <span class="a d-caption" style="--x:1186;--y:360">إربد</span>
+          <span class="a d-caption" style="--x:180;--y:443">معركة اليرموك</span>
+          <h1 class="a d-hero__line1 w6 tr">معا نتعلم اللغة<span class="sr-only"> ونعيش الثقافة الاردنية</span></h1>
+        </div>
       </section>
 
       <!-- 02 · Listen & Watch (cinematic video rising out of hero) -->
+      <div class="band band--d-listen">
       <section class="sec d-listen" aria-labelledby="d-listen-title">
         <div class="a d-listen__surface" aria-hidden="true"></div>
         <button type="button" class="a d-listen__video js-video" data-yt="AoOTpDCN2tM" aria-label="تشغيل فيديو: المشرف العام وهو يشرح البرنامج">
@@ -88,8 +93,10 @@
         </div>
         <div class="a d-listen__hairline" aria-hidden="true"></div>
       </section>
+      </div>
 
       <!-- 03 · Academy intro (editorial) -->
+      <div class="band band--d-academy">
       <section class="sec d-academy" aria-labelledby="d-academy-title">
         <figure class="a d-academy__photo"><img class="cover" src="assets/img/yarmouk.jpg" alt="منظر طبيعي لمنطقة اليرموك" /></figure>
         <p class="a d-academy__year w3" aria-hidden="true">2009</p>
@@ -102,8 +109,10 @@
           </a>
         </div>
       </section>
+      </div>
 
       <!-- 04 · Features (bento — 13 items in source order, RTL) -->
+      <div class="band band--d-features">
       <section class="sec d-features" id="d-features" aria-label="المميزات">
         <div class="d-features__row" style="height:560px">
           <article class="a fcard fcard--light" style="left:714px;top:0px;width:486px;height:560px">
@@ -257,16 +266,20 @@
           </article>
         </div>
       </section>
+      </div>
 
       <!-- 05 · CTA / سجل الان (1) — typographic band -->
+      <div class="band band--d-cta1">
       <section class="sec d-cta1">
         <a class="d-cta1__link" href="#d-register">
           <span class="a d-cta1__text w6">سجل الان</span>
           <span class="a d-cta1__btn" aria-hidden="true"><img src="assets/img/icon-arrow-f-64.svg" alt="" width="64" height="64" /></span>
         </a>
       </section>
+      </div>
 
       <!-- 06 · Latest news (compact editorial strip) — items load dynamically on the live site -->
+      <div class="band band--d-news">
       <section class="sec d-news" aria-labelledby="d-news-title">
         <div class="d-news__head">
           <a class="d-news__more" href="#">
@@ -281,8 +294,10 @@
           <article class="d-news__item is-skeleton" aria-hidden="true"><i class="d-news__date"></i><i class="d-news__t1"></i><i class="d-news__t2"></i></article>
         </div>
       </section>
+      </div>
 
       <!-- 07 · Detailed program in Jordan -->
+      <div class="band band--d-program">
       <section class="sec d-program" id="d-program" aria-labelledby="d-program-title">
         <figure class="a d-program__photo"><img class="cover" src="assets/img/program-petra.jpg" alt="الخزنة في البتراء، الأردن" /></figure>
         <h2 id="d-program-title" class="sr-only">برنامجنا التفصيلي في الاردن</h2>
@@ -293,8 +308,10 @@
         <img class="a" src="assets/img/route-dashed.svg" alt="" style="left:700px;top:748px;width:300px;height:2px" />
         <img class="a" src="assets/img/route-start.svg" alt="" style="left:692px;top:743px;width:12px;height:12px" />
       </section>
+      </div>
 
       <!-- 08 · Jordan adventures (horizontal journey) -->
+      <div class="band band--d-adv">
       <section class="sec d-adv" aria-labelledby="d-adv-title">
         <figure class="a d-adv__overlap"><img class="cover" src="assets/img/yarmouk.jpg" alt="منظر طبيعي لمنطقة اليرموك" /></figure>
         <h2 id="d-adv-title" class="a d-adv__title w6 tr">اكتشف عالم المغامرات والتحدي في الاردن</h2>
@@ -345,7 +362,7 @@
               </div>
             </article>
             <article class="a dest" style="right:1536px">
-              <span class="fill" style="background-image:linear-gradient(136.05deg,#8f8574 0%,#332e28 72.464%)"></span>
+              <img class="cover" src="assets/img/dead-sea.jpg" alt="مؤتة و البحر الميت" loading="lazy" style="object-position:center 45%" />
               <span class="a dest__panel"></span>
               <div class="a dest__content">
                 <div class="dest__row">
@@ -356,7 +373,7 @@
               </div>
             </article>
             <article class="a dest" style="right:1890px">
-              <span class="fill" style="background-image:linear-gradient(136.05deg,#d73a48 0%,#4a0c12 72.464%)"></span>
+              <img class="cover" src="assets/img/petra-treasury.jpg" alt="البتراء" loading="lazy" style="object-position:58% center" />
               <span class="a dest__panel"></span>
               <div class="a dest__content">
                 <div class="dest__row">
@@ -367,7 +384,7 @@
               </div>
             </article>
             <article class="a dest" style="right:2244px">
-              <span class="fill" style="background-image:linear-gradient(136.05deg,#b8ae9c 0%,#4f4840 72.464%)"></span>
+              <img class="cover" src="assets/img/wadi-rum.jpg" alt="العقبة و وادي رم" loading="lazy" style="object-position:35% center" />
               <span class="a dest__panel"></span>
               <div class="a dest__content">
                 <div class="dest__row">
@@ -386,8 +403,10 @@
           <button type="button" class="d-roundbtn js-track-prev" data-track="d-adv-track" aria-label="السابق"><img src="assets/img/icon-chev-b-w.svg" alt="" width="24" height="24" /></button>
         </div>
       </section>
+      </div>
 
       <!-- 09 · Articles (featured + supporting) -->
+      <div class="band band--d-articles">
       <section class="sec d-articles" aria-labelledby="d-articles-title">
         <h2 id="d-articles-title" class="a d-articles__title w6 tr">مقالاتنا</h2>
         <figure class="a d-articles__photo"><img class="cover" src="assets/img/manuscript.jpg" alt="" loading="lazy" /></figure>
@@ -420,8 +439,10 @@
           <span>المزيد</span>
         </a>
       </section>
+      </div>
 
       <!-- 10 · Camp companions (people collage) -->
+      <div class="band band--d-companions">
       <section class="sec d-companions" aria-labelledby="d-comp-title">
         <h2 id="d-comp-title" class="a d-companions__title w6 tr">رفقاء مخيمات اللغة العربية في الاردن</h2>
         <figure class="a d-comp" style="left:1020px;top:330px;width:300px;height:430px">
@@ -454,8 +475,10 @@
           <span>المزيد</span>
         </a>
       </section>
+      </div>
 
       <!-- 11 · Guidebook (artifact) -->
+      <div class="band band--d-book">
       <section class="sec d-book" aria-labelledby="d-book-title">
         <div class="a d-book__desk" aria-hidden="true"></div>
         <img class="a d-book__cover" src="assets/img/book-cover.webp" alt="غلاف كتاب دليل السياحة التعليمية" loading="lazy" />
@@ -467,8 +490,10 @@
           <h2 id="d-book-title" class="d-book__title w6 tr">كتابنا الذي صنعناه كدليل لرحلاتنا في الاردن</h2>
         </div>
       </section>
+      </div>
 
       <!-- 12 · Learning & culture intro (pull statement) -->
+      <div class="band band--d-pull">
       <section class="sec d-pull" aria-labelledby="d-pull-title">
         <div class="a d-pull__col tr">
           <h2 id="d-pull-title" class="d-pull__h w5">معا نتعلم اللغة ونعيش الثقافة الاردنية</h2>
@@ -477,8 +502,10 @@
         <div class="a d-pull__rule" aria-hidden="true"></div>
         <blockquote class="a d-pull__quote w6 tr">أنا متحمس للبدء في هذه الرحلة معك!</blockquote>
       </section>
+      </div>
 
       <!-- 13 · Support & strategy (hierarchy bento) -->
+      <div class="band band--d-support">
       <section class="sec d-support" aria-labelledby="d-support-title">
         <div class="a d-support__head">
           <h2 id="d-support-title" class="d-support__title w6 tr">لا نكل ولا نمل في الدعم العلمي والفني والاستراتيجي</h2>
@@ -520,8 +547,10 @@
           </li>
         </ol>
       </section>
+      </div>
 
       <!-- 14 · Our success continues (statistics composition) -->
+      <div class="band band--d-stats">
       <section class="sec d-stats" aria-labelledby="d-stats-title">
         <h2 id="d-stats-title" class="a d-stats__title w6 tr">نجاحنا مستمر بفضلكم</h2>
         <a class="a btn btn--secondary" style="left:1185px;top:210px" href="#d-register">سجل الان</a>
@@ -552,8 +581,10 @@
           </div>
         </div>
       </section>
+      </div>
 
       <!-- 15 · Team (portrait carousel) — member data comes from /team on the live site -->
+      <div class="band band--d-team">
       <section class="sec d-team" aria-labelledby="d-team-title">
         <img class="a" src="assets/img/team-glow.svg" alt="" style="left:170px;top:-120px;width:1100px;height:700px" />
         <img class="a" src="assets/img/team-arc.svg" alt="" style="left:340px;top:-300px;width:760px;height:760px" />
@@ -570,13 +601,15 @@
         <button type="button" class="a d-team__arrow js-track-prev" data-track="d-team-track" style="left:1288px" aria-label="السابق"><img src="assets/img/icon-chevron-back-22.svg" alt="" /></button>
         <div class="a d-team__progress" id="d-team-progress"><i></i></div>
       </section>
+      </div>
 
       <!-- 16 · Jordan 2023 trip video (cinematic, near full-bleed) -->
+      <div class="band band--d-trip">
       <section class="sec d-trip" aria-labelledby="d-trip-title">
         <div class="fill d-trip__poster" aria-hidden="true"></div>
         <div class="fill d-trip__scrim-l" aria-hidden="true"></div>
         <div class="a d-trip__scrim-b" aria-hidden="true"></div>
-        <button type="button" class="a d-trip__play js-video" data-yt="" aria-label="تشغيل فيديو رحلتنا الى الاردن 2023">
+        <button type="button" class="a d-trip__play js-video" data-yt="6U7VriFoPvg" aria-label="تشغيل فيديو رحلتنا الى الاردن 2023">
           <img class="a" src="assets/img/trip-play-ring.svg" alt="" style="left:0;top:0;width:260px;height:260px" />
           <img class="a" src="assets/img/trip-play-button.svg" alt="" style="left:35px;top:35px;width:190px;height:190px" />
           <img class="a" src="assets/img/icon-play-80.svg" alt="" style="left:90px;top:90px;width:80px;height:80px" />
@@ -590,8 +623,10 @@
         <div class="a d-trip__track" aria-hidden="true"></div>
         <div class="a d-trip__played" aria-hidden="true"></div>
       </section>
+      </div>
 
       <!-- 17 · Testimonials (featured quote + horizontal previews) -->
+      <div class="band band--d-testi">
       <section class="sec d-testi" aria-labelledby="d-testi-title">
         <h2 id="d-testi-title" class="a d-testi__title w6 tr">قالو عنا</h2>
         <figure class="a d-testi__photo"><img class="cover" src="assets/img/testimonial-yaser.jpg" alt="محمد ياسر" loading="lazy" /></figure>
@@ -665,8 +700,10 @@
           <span>جميع التعليقات</span>
         </a>
       </section>
+      </div>
 
       <!-- 18 · Final registration (emotional close — echoes hero) -->
+      <div class="band band--d-register">
       <section class="sec d-register" id="d-register" aria-label="سجل الان">
         <div class="a d-register__backdrop" aria-hidden="true"><img class="cover" src="assets/img/manuscript.jpg" alt="" loading="lazy" /></div>
         <div class="a d-register__tint" aria-hidden="true"></div>
@@ -681,8 +718,10 @@
           <span class="a d-register__btn" aria-hidden="true"><img src="assets/img/icon-arrow-f-72.svg" alt="" width="72" height="72" /></span>
         </a>
       </section>
+      </div>
 
       <!-- 19 · Footer (quiet) -->
+      <div class="band band--d-footer">
       <footer class="sec d-footer" id="d-contact">
         <p class="a d-footer__ghost w6" aria-hidden="true">دروب العربية</p>
         <p class="a d-footer__brand w6">دروب العربية</p>
@@ -707,6 +746,7 @@
         </div>
         <button type="button" class="a d-footer__top js-top" aria-label="العودة إلى الأعلى"><img src="assets/img/icon-chev-d.svg" alt="" width="28" height="28" /></button>
       </footer>
+      </div>
     </div>
 
     <!-- =====================================================================
@@ -714,6 +754,7 @@
          ===================================================================== -->
     <div class="page page--mobile" id="mobile">
       <!-- 01 · Hero / Immersive scene -->
+      <div class="band band--m-hero">
       <section class="sec m-hero" id="m-home" aria-label="الرئيسية">
         <div class="a m-hero__backdrop" aria-hidden="true"><img class="cover" src="assets/img/manuscript.jpg" alt="" /></div>
         <div class="a m-hero__tint" aria-hidden="true"></div>
@@ -734,11 +775,15 @@
           <a class="btn btn--primary" href="tel:+905347308092">الاتصال بنا الان</a>
         </div>
       </section>
+      </div>
 
       <!-- 02 · Bridge / Photo overlap -->
+      <div class="band band--m-bridge">
       <div class="sec m-bridge" aria-hidden="true"><img src="assets/img/m-bridge.svg" alt="" width="390" height="80" /></div>
+      </div>
 
       <!-- 03 · Listen & Watch (video) -->
+      <div class="band band--m-listen">
       <section class="sec m-listen" aria-labelledby="m-listen-title">
         <div class="m-listen__head tr">
           <h2 id="m-listen-title" class="m-listen__title w6">استمع وشاهد</h2>
@@ -757,8 +802,10 @@
         <span class="a m-trail" style="left:368px;top:0;height:100px" aria-hidden="true"></span>
         <img class="a" src="assets/img/m-trail-node.svg" alt="" style="left:362px;top:94px;width:14px;height:14px" />
       </section>
+      </div>
 
       <!-- 04 · Academy intro -->
+      <div class="band band--m-academy">
       <section class="sec m-academy" aria-labelledby="m-academy-title">
         <h2 id="m-academy-title" class="m-academy__title w6 tr">معا نتعلم اللغة ونعيش الثقافة الاردنية</h2>
         <p class="m-academy__text tr">إن أكاديمية إسطنبول التي تأسست عام <strong class="w6">2009</strong> والتي تعتبر أكبر مركز في مجال تعليم اللغة العربية والتركية للأجانب قد سجلت حتى اليوم نجاحات باهرة في التدريب والتعليم داخل مبناها من جهة وفيما تقدمه من خدمات للمؤسسات الأخرى من جهة ثانية.</p>
@@ -767,8 +814,10 @@
           <span class="m-academy__rule"></span>
         </a>
       </section>
+      </div>
 
       <!-- 05 · Features (cards, 13 items in source order) -->
+      <div class="band band--m-features">
       <section class="sec m-features" id="m-features" aria-label="المميزات">
         <article class="mf mf--accent">
           <div class="mf__top">
@@ -873,16 +922,20 @@
           </article>
         </div>
       </section>
+      </div>
 
       <!-- 06 · CTA / سجل الان (1) -->
+      <div class="band band--m-cta1">
       <section class="sec m-cta1">
         <a class="m-cta1__row" href="#m-register">
           <span class="m-cta1__btn" aria-hidden="true"><img src="assets/img/m-cta-arrow.svg" alt="" width="28" height="28" /></span>
           <span class="m-cta1__text w6">سجل الان</span>
         </a>
       </section>
+      </div>
 
       <!-- 08 · Detailed program in Jordan -->
+      <div class="band band--m-program">
       <section class="sec m-program" id="m-program" aria-labelledby="m-program-title">
         <h2 id="m-program-title" class="m-program__h w6 tr">
           <span class="m-program__kicker">برنامجنا</span>
@@ -896,8 +949,10 @@
         </button>
         <a class="btn btn--primary" href="#m-register">سجل الان</a>
       </section>
+      </div>
 
       <!-- 09 · Jordan adventures (swipe gallery) -->
+      <div class="band band--m-adv">
       <section class="sec m-adv" aria-labelledby="m-adv-title">
         <div class="m-pad"><h2 id="m-adv-title" class="m-adv__title w6 tr">اكتشف عالم المغامرات والتحدي في الاردن</h2></div>
         <div class="m-adv__viewport swipe-x js-track" id="m-adv-track" data-dots="m-adv-dots" aria-label="وجهات الرحلات">
@@ -931,21 +986,21 @@
               <h3 class="a mdest__name w5">السلط</h3>
             </article>
             <article class="mdest">
-              <span class="fill" style="background-image:linear-gradient(132.8deg,#dc5460 0%,#4a0c12 72.464%)"></span>
+              <img class="cover" src="assets/img/dead-sea.jpg" alt="مؤتة و البحر الميت" loading="lazy" style="object-position:center 45%" />
               <span class="a mdest__scrim"></span>
               <span class="a mdest__n w5">05</span>
               <button type="button" class="a mdest__play js-yt" data-yt="HIk8-CUCvgw" aria-label="تشغيل فيديو مؤتة و البحر الميت"><img src="assets/img/icon-play-22.svg" alt="" width="22" height="22" /></button>
               <h3 class="a mdest__name w5">مؤتة و البحر الميت</h3>
             </article>
             <article class="mdest">
-              <span class="fill" style="background-image:linear-gradient(132.8deg,#d9d0c0 0%,#8f8574 72.464%)"></span>
+              <img class="cover" src="assets/img/petra-treasury.jpg" alt="البتراء" loading="lazy" style="object-position:58% center" />
               <span class="a mdest__scrim"></span>
               <span class="a mdest__n w5">06</span>
               <button type="button" class="a mdest__play js-yt" data-yt="z67tBYnJTkg" aria-label="تشغيل فيديو البتراء"><img src="assets/img/icon-play-22.svg" alt="" width="22" height="22" /></button>
               <h3 class="a mdest__name w5">البتراء</h3>
             </article>
             <article class="mdest">
-              <span class="fill" style="background-image:linear-gradient(132.8deg,#dc5460 0%,#9b1824 72.464%)"></span>
+              <img class="cover" src="assets/img/wadi-rum.jpg" alt="العقبة و وادي رم" loading="lazy" style="object-position:35% center" />
               <span class="a mdest__scrim"></span>
               <span class="a mdest__n w5">07</span>
               <button type="button" class="a mdest__play js-yt" data-yt="2X6HCP7nCMs" aria-label="تشغيل فيديو العقبة و وادي رم"><img src="assets/img/icon-play-22.svg" alt="" width="22" height="22" /></button>
@@ -960,8 +1015,10 @@
           </div>
         </div>
       </section>
+      </div>
 
       <!-- 10 · Articles (editorial) -->
+      <div class="band band--m-articles">
       <section class="sec m-articles" aria-labelledby="m-articles-title">
         <div class="m-pad"><h2 id="m-articles-title" class="m-articles__title w6 tr">مقالاتنا</h2></div>
         <img class="m-articles__photo" src="assets/img/manuscript.jpg" alt="" loading="lazy" />
@@ -992,8 +1049,10 @@
           </div>
         </div>
       </section>
+      </div>
 
       <!-- 11 · Camp companions (portrait wall) -->
+      <div class="band band--m-companions">
       <section class="sec m-companions" aria-labelledby="m-comp-title">
         <h2 id="m-comp-title" class="m-companions__title w6 tr">رفقاء مخيمات اللغة العربية في الاردن</h2>
         <div class="m-companions__wall">
@@ -1031,8 +1090,10 @@
           <a class="m-more m-more--pink" href="#"><img src="assets/img/icon-chev-f-20-pink.svg" alt="" width="20" height="20" /><span>المزيد</span></a>
         </div>
       </section>
+      </div>
 
       <!-- 12 · Guidebook (artifact) -->
+      <div class="band band--m-book">
       <section class="sec m-book" aria-labelledby="m-book-title">
         <div class="m-book__surface">
           <div class="m-book__cover"><img src="assets/img/book-cover.webp" alt="غلاف كتاب دليل السياحة التعليمية" loading="lazy" /></div>
@@ -1043,16 +1104,20 @@
         </a>
         <h2 id="m-book-title" class="m-book__title w6 tr">كتابنا الذي صنعناه كدليل لرحلاتنا في الاردن</h2>
       </section>
+      </div>
 
       <!-- 13 · Learning & culture intro (pull-statement) -->
+      <div class="band band--m-pull">
       <section class="sec m-pull" aria-labelledby="m-pull-title">
         <span class="a m-pull__rule" aria-hidden="true"></span>
         <h2 id="m-pull-title" class="m-pull__h w5 tr">معا نتعلم اللغة ونعيش الثقافة الاردنية</h2>
         <p class="m-pull__p tr">تعلم اللغة العربية والثقافة العربية أمران ممتعان ومفيدان, نحن سعداء لمساعدتك في هذه الرحلة.</p>
         <blockquote class="m-pull__quote w6 tr">أنا متحمس للبدء في هذه الرحلة معك!</blockquote>
       </section>
+      </div>
 
       <!-- 14 · Support & strategy (ledger) -->
+      <div class="band band--m-support">
       <section class="sec m-support" aria-labelledby="m-support-title">
         <h2 id="m-support-title" class="m-support__title w6 tr">لا نكل ولا نمل في الدعم العلمي والفني والاستراتيجي</h2>
         <ol class="m-ledger">
@@ -1065,8 +1130,10 @@
         </ol>
         <a class="btn btn--primary m-support__btn" href="#m-register">سجل الان</a>
       </section>
+      </div>
 
       <!-- 15 · Our success continues (statistics) -->
+      <div class="band band--m-stats">
       <section class="sec m-stats" aria-labelledby="m-stats-title">
         <h2 id="m-stats-title" class="m-stats__title w6 tr">نجاحنا مستمر بفضلكم</h2>
         <a class="btn btn--secondary" href="#m-register">سجل الان</a>
@@ -1092,8 +1159,10 @@
           <p class="m-stat__s">دولية الى الاردن</p>
         </div>
       </section>
+      </div>
 
       <!-- 16 · Team (swipe strip) — member data comes from /team on the live site -->
+      <div class="band band--m-team">
       <section class="sec m-team" aria-labelledby="m-team-title">
         <div class="m-pad"><h2 id="m-team-title" class="m-team__title w6 tr">فريق العمل</h2></div>
         <div class="m-team__viewport swipe-x">
@@ -1121,8 +1190,10 @@
           </div>
         </div>
       </section>
+      </div>
 
       <!-- 17 · Jordan 2023 trip video (cinematic) -->
+      <div class="band band--m-trip">
       <section class="sec m-trip" aria-labelledby="m-trip-title">
         <div class="fill m-trip__poster" aria-hidden="true"></div>
         <div class="a m-trip__scrim-t" aria-hidden="true"></div>
@@ -1132,7 +1203,7 @@
           <h2 id="m-trip-title" class="m-trip__big w6" style="color:var(--text-inverse)">رحلتنا الى</h2>
           <p class="m-trip__big w6" style="color:var(--terracotta-200)">الاردن 2023</p>
         </div>
-        <button type="button" class="a m-trip__play js-video" data-yt="" aria-label="تشغيل فيديو رحلتنا الى الاردن 2023">
+        <button type="button" class="a m-trip__play js-video" data-yt="6U7VriFoPvg" aria-label="تشغيل فيديو رحلتنا الى الاردن 2023">
           <img class="a" src="assets/img/m-trip-ring.svg" alt="" style="left:0;top:0;width:128px;height:128px" />
           <img class="a" src="assets/img/m-trip-button.svg" alt="" style="left:18px;top:18px;width:92px;height:92px" />
           <img class="a" src="assets/img/icon-play-40.svg" alt="" style="left:44px;top:44px;width:40px;height:40px" />
@@ -1141,8 +1212,10 @@
         <span class="a m-trip__played" aria-hidden="true"></span>
         <a class="a btn btn--primary" style="left:238px;top:580px" href="#m-register">سجل الان</a>
       </section>
+      </div>
 
       <!-- 18 · Testimonials (focus + swipe) -->
+      <div class="band band--m-testi">
       <section class="sec m-testi" aria-labelledby="m-testi-title">
         <div class="m-pad"><h2 id="m-testi-title" class="m-testi__title w6 tr">قالو عنا</h2></div>
         <div class="m-testi__viewport swipe-x js-track" id="m-testi-track" data-dots="m-testi-dots">
@@ -1222,8 +1295,10 @@
         <div class="m-testi__pager"><div class="m-pager__segs m-pager__segs--sand" id="m-testi-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
         <a class="m-testi__all" href="#"><img src="assets/img/icon-arrow-f-24.svg" alt="" width="24" height="24" /><span class="w5">جميع التعليقات</span></a>
       </section>
+      </div>
 
       <!-- 19 · Final registration (emotional close) -->
+      <div class="band band--m-register">
       <section class="sec m-register" id="m-register" aria-label="سجل الان">
         <div class="a m-register__bg" aria-hidden="true"></div>
         <img class="a" src="assets/img/m-reg-scrim.svg" alt="" style="left:0;top:54px;width:390px;height:240px" />
@@ -1234,8 +1309,10 @@
           <span class="m-register__text w6">سجل الان</span>
         </a>
       </section>
+      </div>
 
       <!-- 20 · Footer (quiet) -->
+      <div class="band band--m-footer">
       <footer class="sec m-footer" id="m-contact">
         <p class="m-footer__brand w6">دروب العربية</p>
         <nav class="m-footer__nav" aria-label="روابط التذييل">
@@ -1260,6 +1337,7 @@
           </div>
         </div>
       </footer>
+      </div>
     </div>
 
     <!-- Mobile Navigation Bar — Liquid Glass (fixed, bottom) -->

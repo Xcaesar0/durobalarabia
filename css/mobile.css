@@ -1715,10 +1715,50 @@
 
 /* room for the fixed bottom navigation under the footer */
 .page--mobile {
-  padding-bottom: 100px;
+  padding-bottom: calc(100px * var(--zm));
   background: var(--teal-950);
 }
 
 .m-companions .m-footrow {
   padding-top: 0;
+}
+
+/* ---------- Full-bleed layers (tablet widths, where the 390 design is shown
+   centred; --gx is 0 on phones, so nothing changes there) ---------- */
+.m-hero__tint,
+.m-hero__scrim-b,
+.m-hero__scrim-t,
+.m-trip__poster,
+.m-trip__scrim-t,
+.m-trip__scrim-b,
+.m-register__bg,
+.m-register img[src$="m-reg-scrim.svg"] {
+  left: calc(-1 * var(--gx)) !important;
+  right: calc(-1 * var(--gx)) !important;
+  width: auto !important;
+}
+
+.m-hero__backdrop {
+  left: calc(-30px - var(--gx));
+  width: calc(450px + 2 * var(--gx));
+}
+
+.m-articles__photo,
+.m-adv__viewport,
+.m-team__viewport,
+.m-testi__viewport {
+  width: calc(390px + 2 * var(--gx));
+  margin-inline: calc(-1 * var(--gx));
+}
+
+.m-adv__rail,
+.m-team__rail,
+.m-testi__rail {
+  padding-inline: calc(20px + var(--gx));
+}
+
+.mdest,
+.m-tm,
+.m-tq {
+  scroll-margin-inline: calc(20px + var(--gx));
 }

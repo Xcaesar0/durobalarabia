@@ -3,17 +3,47 @@
    All geometry is in Figma pixels on a 1440px canvas (scaled by --zd).
    ========================================================================== */
 
-/* ---------- 01 · Hero / Immersive scene + header ---------- */
+/* ---------- 01 · Hero / Immersive scene + header ----------
+   The hero is fluid (not a scaled canvas): it spans the full viewport width
+   and its vertical rhythm adapts to the viewport height so the whole
+   composition is visible on first view on laptop screens.
+
+   Units (all lengths):
+   --u   one Figma px at the current width (1px at ≥1440px)
+   --ut  headline unit: shrinks to max 80% of --u when the screen is short
+   --uc  photo-collage unit: shrinks to max 50% of --u when the screen is short
+   With tall enough screens --ut = --uc = --u and the hero is the Figma frame. */
 .d-hero {
-  height: 980px;
+  --vh: 100vh;
+  --u: calc(var(--zd) * 1px);
+  --ut: clamp(calc(0.8 * var(--u)), calc((var(--vh) - 524.9 * var(--u)) / 336), var(--u));
+  --uc: clamp(calc(0.5 * var(--u)), calc((var(--vh) - 247 * var(--u) - 336 * var(--ut)) / 397), var(--u));
+  /* collage top 127, headline overlaps the collage bottom by 53 */
+  --y1: calc(127 * var(--u) + 397 * var(--uc));
+  --y2: calc(var(--y1) + 159 * var(--ut));
+  --yr: calc(var(--y1) + 277 * var(--ut));
+  width: 100%;
+  height: calc(var(--yr) + 120 * var(--u) + 59 * var(--ut));
   background: var(--background-inverse);
+  isolation: isolate;
 }
 
+@supports (height: 100svh) {
+  .d-hero {
+    --vh: 100svh;
+  }
+}
+
+.d-hero__stage {
+  position: relative;
+  width: calc(1440 * var(--u));
+  height: 100%;
+  margin-inline: auto;
+}
+
+/* full-width background layers */
 .d-hero__backdrop {
-  left: -40px;
-  top: -40px;
-  width: 1520px;
-  height: 1060px;
+  inset: -40px;
   filter: blur(20px);
 }
 
@@ -22,6 +52,26 @@
   background: var(--background-inverse);
 }
 
+.d-hero__scrim-b {
+  left: 0;
+  right: 0;
+  top: calc(127 * var(--u) + 293 * var(--uc));
+  bottom: 0;
+  z-index: 2;
+  background: linear-gradient(to bottom, rgba(44, 7, 11, 0) 0%, rgba(44, 7, 11, 0.92) 55%, #2c070b 100%);
+}
+
+.d-hero__scrim-t {
+  left: 0;
+  right: 0;
+  top: 0;
+  height: calc(200 * var(--u));
+  z-index: 2;
+  background: linear-gradient(to bottom, rgba(44, 7, 11, 0.7), rgba(44, 7, 11, 0));
+}
+
+/* photo collage: Figma x/y/w/h scaled around the collage centre (x 718, top 127) */
+/* (.d-hero__photo is also reused by the final-registration section) */
 .d-hero__photo {
   margin: 0;
   border: 1px solid rgba(255, 255, 255, 0.4);
@@ -29,116 +79,138 @@
   overflow: hidden;
 }
 
+.d-hero .d-hero__photo {
+  left: calc(718 * var(--u) + (var(--x) - 718) * var(--uc));
+  top: calc(127 * var(--u) + (var(--y) - 127) * var(--uc));
+  width: calc(var(--w) * var(--uc));
+  height: calc(var(--h) * var(--uc));
+  z-index: 1;
+  box-shadow: 0 calc(28 * var(--uc)) calc(60 * var(--uc)) calc(-10 * var(--uc)) rgba(13, 0, 3, 0.55);
+}
+
+/* decorative layers anchored to the bottom of the hero */
 .d-hero__flag {
-  left: -58.77px;
-  top: 544.22px;
-  width: 682.747px;
-  height: 487.86px;
+  left: calc(-58.77 * var(--u));
+  bottom: calc(-52.08 * var(--u));
+  width: calc(682.747 * var(--u));
+  height: calc(487.86 * var(--u));
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .d-hero__flag img {
-  width: 616.331px;
-  height: 346.731px;
+  width: calc(616.331 * var(--u));
+  height: calc(346.731 * var(--u));
   object-fit: cover;
   transform: rotate(-14.26deg);
   flex: none;
 }
 
 .d-hero__img2 {
-  left: 191px;
-  top: 562px;
-  width: 491.059px;
-  height: 491.059px;
+  left: calc(191 * var(--u));
+  bottom: calc(-73.06 * var(--u));
+  width: calc(491.059 * var(--u));
+  height: calc(491.059 * var(--u));
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .d-hero__img2 img {
-  width: 359.307px;
-  height: 359.307px;
+  width: calc(359.307 * var(--u));
+  height: calc(359.307 * var(--u));
   object-fit: cover;
   transform: rotate(-30.1deg);
   flex: none;
 }
 
 .d-hero__img1 {
-  left: 835px;
-  top: 608px;
-  width: 657px;
-  height: 385px;
+  left: calc(835 * var(--u));
+  bottom: calc(-13 * var(--u));
+  width: calc(657 * var(--u));
+  height: calc(385 * var(--u));
+  z-index: 1;
   object-fit: cover;
 }
 
-.d-hero__scrim-b {
-  left: 0;
-  top: 420px;
-  width: 1440px;
-  height: 560px;
-  background: linear-gradient(to bottom, rgba(44, 7, 11, 0) 0%, rgba(44, 7, 11, 0.92) 55%, #2c070b 100%);
-}
-
-.d-hero__scrim-t {
-  left: 0;
-  top: 0;
-  width: 1440px;
-  height: 200px;
-  background: linear-gradient(to bottom, rgba(44, 7, 11, 0.7), rgba(44, 7, 11, 0));
-}
-
 .d-hero__rail {
-  left: 1318px;
-  top: 170px;
+  left: calc(1318 * var(--u));
+  top: calc(127 * var(--u) + 43 * var(--uc));
   width: 2px;
-  height: 300px;
+  height: calc(300 * var(--uc));
+  z-index: 3;
   background: var(--text-inverse);
 }
 
 .d-hero__rail--active {
-  height: 90px;
+  height: calc(90 * var(--uc));
   background: var(--brand-secondary);
 }
 
+.d-hero__line1,
+.d-hero__line2,
+.d-hero__intro,
+.d-hero__emph {
+  z-index: 3;
+}
+
 .d-hero__line1 {
-  right: 120px;
-  top: 524px;
-  width: 1200px;
-  font-size: 120px;
+  right: calc(120 * var(--u));
+  top: var(--y1);
+  width: calc(1200 * var(--u));
+  font-size: calc(120 * var(--ut));
   line-height: 1.05;
   color: var(--text-inverse);
 }
 
 .d-hero__line2 {
-  right: 120px;
-  top: 683px;
-  width: 1200px;
-  font-size: var(--size-display-l);
+  right: calc(120 * var(--u));
+  top: var(--y2);
+  width: calc(1200 * var(--u));
+  font-size: calc(64 * var(--ut));
   line-height: 1.28;
   color: var(--terracotta-200);
 }
 
 .d-hero__intro {
-  right: 120px;
-  top: 801px;
-  width: 560px;
-  font-size: var(--size-body-small);
+  right: calc(120 * var(--u));
+  top: var(--yr);
+  width: calc(560 * var(--u));
+  font-size: calc(15 * var(--u));
   line-height: 1.6;
   color: var(--text-inverse-muted);
 }
 
 .d-hero__emph {
-  right: 728px;
-  top: 801px;
-  width: 300px;
-  font-size: var(--size-heading-h3);
+  right: calc(728 * var(--u));
+  top: var(--yr);
+  width: calc(300 * var(--u));
+  font-size: calc(28 * var(--u));
   line-height: 1.45;
   color: var(--text-inverse);
 }
 
+/* Widgets with fixed internal geometry (button, captions, header) keep their
+   Figma px values and are scaled as a unit; their offsets are divided by the
+   scale because zoom also applies to left/top. */
+.d-hero__cta,
+.d-caption,
+.d-header {
+  zoom: var(--zd);
+  z-index: 3;
+}
+
+.d-hero__cta {
+  left: 120px;
+  top: calc(var(--yr) / var(--zd));
+}
+
 .d-caption {
+  left: calc((718 * var(--u) + (var(--x) - 718) * var(--uc)) / var(--zd));
+  top: calc((127 * var(--u) + (var(--y) - 127) * var(--uc)) / var(--zd));
   display: flex;
   align-items: center;
   padding: 8px 14px;
@@ -159,7 +231,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 2;
 }
 
 .d-header__side {
@@ -2148,4 +2219,50 @@
 /* rows keep Figma's left→right geometry */
 .d-support .d-support__row {
   direction: ltr;
+}
+
+/* ---------- Full-bleed layers (reach the viewport edges when the screen is
+   wider than 1440px; --gx is 0 otherwise, so nothing changes) ---------- */
+.d-listen__surface,
+.d-book__desk,
+.d-trip__poster,
+.d-trip__scrim-l,
+.d-trip__scrim-b,
+.d-register__tint,
+.d-register__scrim,
+.d-adv__track,
+.d-testi__track {
+  left: calc(-1 * var(--gx)) !important;
+  right: calc(-1 * var(--gx)) !important;
+  width: auto !important;
+}
+
+.d-register__backdrop {
+  left: calc(-40px - var(--gx));
+  width: calc(1520px + 2 * var(--gx));
+}
+
+/* photos that bleed off the left / right edge in the design */
+.d-academy__photo {
+  left: calc(-1 * var(--gx));
+  width: calc(560px + var(--gx));
+}
+
+.d-articles__photo {
+  width: calc(940px + var(--gx));
+}
+
+/* scrollers keep their first card aligned with the content column */
+.d-adv__rail {
+  box-sizing: content-box;
+  border-inline: var(--gx) solid transparent;
+}
+
+.d-adv__route {
+  right: calc(-1 * var(--gx));
+  width: calc(100% + 2 * var(--gx));
+}
+
+.d-testi__rail {
+  padding-inline: calc(120px + var(--gx));
 }

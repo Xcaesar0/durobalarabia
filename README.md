@@ -19,11 +19,18 @@ It can be deployed as-is to GitHub Pages, Netlify, Vercel, cPanel, etc. — ther
 - **Two layouts, exactly as designed.** The page contains the desktop design
   (`Homepage / Desktop / 1440`) and the mobile design (`Homepage / Mobile / 390`).
   Screens **≥ 1024px** get the desktop design, smaller screens get the mobile design.
-- **Pixel geometry from Figma.** Each layout is built at its Figma frame width (1440 / 390)
+- **Pixel geometry from Figma.** Each section is built at its Figma frame width (1440 / 390)
   using the frame's own coordinates, then scaled to the screen width by `js/scale.js`
   (CSS `zoom`). So every phone and every desktop sees the same composition as the Figma frame.
-  Desktop scaling stops growing at 1920px; tablets (600–1023px) get the mobile design
-  at up to 600px wide, centred.
+- **Full-width backgrounds.** Every section sits in a full-width `.band` that paints its
+  background edge to edge. Above 1440px the desktop content stays at 1440px, centred,
+  while backgrounds and full-bleed layers extend to the screen edges (no white gutters at
+  any width or browser zoom). Tablets (600–1023px) get the mobile design at up to 600px wide,
+  centred on full-width backgrounds.
+- **Fluid hero.** The desktop hero spans the full width and adapts to the screen height:
+  on short laptop screens the photo collage and headline shrink (via `clamp()`) so the whole
+  composition — header, collage, headlines, paragraph and CTA — fits the first view.
+  On screens tall enough it is exactly the Figma frame.
 - **Design tokens** (colours, type scale, mobile/desktop type modes) are CSS variables in
   `css/base.css` and `css/mobile.css`, named like the Figma variables.
 - **Font:** Readex Pro (variable, SIL OFL), self-hosted in `assets/fonts/`.
@@ -43,8 +50,9 @@ assets/fonts/       Readex Pro woff2
 
 ## Interactions
 
-- Destination cards ("اكتشف عالم المغامرات") open their YouTube videos in a lightbox
-  (IDs taken from the Figma layer names).
+- Every play button opens its YouTube video in a lightbox (`data-yt="<video id>"`):
+  the destination cards, the supervisor video, the mobile program video and the
+  Jordan 2023 trip video.
 - Horizontal galleries (destinations, team, testimonials) scroll right-to-left with
   arrows / swipe; the testimonial counter and pager dots follow the scroll.
 - Statistics count up when they enter the screen.
@@ -55,8 +63,6 @@ assets/fonts/       Readex Pro woff2
 
 These are placeholders in the Figma file too:
 
-- **Videos without an ID** — supervisor video, Jordan 2023 trip video, mobile program video:
-  add the YouTube ID in the empty `data-yt=""` attribute of those buttons in `index.html`.
 - **Portrait photos** (companions, team, testimonials 2–10, stats photo) use the Figma
   gradient placeholders.
 - **Latest news** shows the skeleton from Figma (loads from `/news` on the live site).

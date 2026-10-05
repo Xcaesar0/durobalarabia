@@ -169,17 +169,112 @@ button {
   direction: rtl;
 }
 
-.page--desktop {
-  width: 1440px;
-  zoom: var(--zd);
-  margin-inline: auto;
+.page--desktop,
+.page--mobile {
+  width: 100%;
 }
 
 .page--mobile {
-  width: 390px;
-  zoom: var(--zm);
-  margin-inline: auto;
   display: none;
+}
+
+/* Each section sits in a full-width band: the band paints the section
+   background edge to edge, the section inside keeps the Figma frame width
+   (1440 / 390) and is scaled to the available width (max 1440 / 600px). */
+.band {
+  position: relative;
+  width: 100%;
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+.band > .sec {
+  /* the band clips horizontally at the viewport edge, so full-bleed layers
+     can extend past the section; the section still clips vertically */
+  overflow-x: visible;
+}
+
+.page--desktop .band > .sec {
+  width: 1440px;
+  margin-inline: auto;
+  zoom: var(--zd);
+}
+
+.page--mobile .band > .sec {
+  width: 390px;
+  margin-inline: auto;
+  zoom: var(--zm);
+}
+
+/* --gx: width of the side gutter (in section units) when the viewport is
+   wider than the section; written by js/scale.js */
+.page--desktop {
+  --gx: var(--gxd, 0px);
+}
+
+.page--mobile {
+  --gx: var(--gxm, 0px);
+}
+
+.band--d-hero,
+.band--d-program,
+.band--d-companions,
+.band--d-support,
+.band--d-team,
+.band--d-register,
+.band--m-hero,
+.band--m-bridge,
+.band--m-program,
+.band--m-companions,
+.band--m-support {
+  background: var(--background-inverse);
+}
+
+.band--d-listen,
+.band--d-features,
+.band--d-news,
+.band--d-articles,
+.band--d-pull,
+.band--d-stats,
+.band--d-testi,
+.band--m-listen,
+.band--m-articles,
+.band--m-pull,
+.band--m-stats,
+.band--m-testi {
+  background: var(--background-primary);
+}
+
+.band--d-academy,
+.band--d-book,
+.band--m-academy,
+.band--m-features,
+.band--m-book,
+.band--m-team {
+  background: var(--background-secondary);
+}
+
+.band--d-adv,
+.band--d-trip,
+.band--d-footer,
+.band--m-adv,
+.band--m-trip,
+.band--m-register,
+.band--m-footer {
+  background: var(--teal-950);
+}
+
+.band--d-cta1 {
+  background: var(--brand-primary);
+}
+
+.band--m-cta1 {
+  background: var(--brand-secondary-strong, #a81a27);
+}
+
+/* the adventures photo overlaps the section above it */
+.band--d-adv {
+  z-index: 1;
 }
 
 @media (max-width: 1023.98px) {
@@ -204,6 +299,7 @@ button {
 .sec {
   position: relative;
   overflow: hidden;
+  overflow: clip;
 }
 
 .cover {
