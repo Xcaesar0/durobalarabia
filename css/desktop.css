@@ -2361,6 +2361,11 @@
   position: relative;
   z-index: 2;
   max-width: 960px;
+  /* .page lays out LTR (Figma geometry); this block is Arabic text, so it
+     runs RTL and hugs the right edge — badge, title and subtitle then share
+     the same right edge */
+  direction: rtl;
+  margin-left: auto;
   text-align: right;
 }
 

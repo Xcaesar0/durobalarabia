@@ -415,6 +415,20 @@ button:focus-visible {
   }
 }
 
+/* Neutral outline button (light surfaces, e.g. WhatsApp on the programs page) */
+.btn--outline {
+  padding: 14px 28px;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.btn--outline:hover {
+  border-color: var(--text-primary);
+  background: rgba(31, 27, 23, 0.04);
+}
+
 /* Secondary button (outline) */
 .btn--secondary {
   border: 1.5px solid var(--brand-primary);
@@ -662,4 +676,8 @@ button:focus-visible {
   width: 40px;
   height: 46px;
   object-fit: contain;
+}
+/* in-page jumps (#d-features, #d-contact …) land below the sticky header */
+.page--desktop [id] {
+  scroll-margin-top: 100px;
 }

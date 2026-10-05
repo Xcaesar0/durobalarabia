@@ -6,17 +6,21 @@
 
   /* ---------- Video lightbox (YouTube) ---------- */
   var modal = null;
+  var opener = null; // element that opened the lightbox, gets focus back on close
 
   function closeModal() {
     if (!modal) return;
     modal.remove();
     modal = null;
     document.documentElement.style.overflow = "";
+    if (opener && document.contains(opener)) opener.focus({ preventScroll: true });
+    opener = null;
   }
 
-  function openVideo(id) {
+  function openVideo(id, trigger) {
     if (!id) return;
     closeModal();
+    opener = trigger || null;
     modal = document.createElement("div");
     modal.className = "vmodal";
     modal.setAttribute("role", "dialog");
@@ -46,7 +50,7 @@
     var trigger = e.target.closest("[data-yt]");
     if (trigger && trigger.getAttribute("data-yt")) {
       e.preventDefault();
-      openVideo(trigger.getAttribute("data-yt"));
+      openVideo(trigger.getAttribute("data-yt"), trigger);
     }
   });
 
@@ -196,6 +200,7 @@
   var pBar = document.createElement("div");
   pBar.className = "page-progress-bar";
   document.body.appendChild(pBar);
+  var pBarTimer = null;
 
   document.addEventListener("click", function (e) {
     if (reduceMotion) return;
@@ -222,6 +227,12 @@
         // Immediate visual feedback (YouTube / GitHub pattern)
         pBar.classList.remove("is-finishing");
         pBar.classList.add("is-loading");
+        // safety net: if the navigation never happens (cancelled, blocked),
+        // don't leave the bar stuck on screen
+        clearTimeout(pBarTimer);
+        pBarTimer = setTimeout(function () {
+          pBar.classList.remove("is-loading", "is-finishing");
+        }, 8000);
       }
     } catch (err) {}
   });
