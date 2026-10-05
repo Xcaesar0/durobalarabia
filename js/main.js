@@ -184,4 +184,65 @@
       navIo.observe(document.getElementById(id));
     });
   }
+
+  /* ========================================================================
+     SENIOR FRONTEND IMPLEMENTATION:
+     1. Instant, responsive page navigation with YouTube-style top progress bar
+     2. Sticky Liquid Glass header scroll elevation
+     ======================================================================== */
+
+  // Inject top loading progress bar
+  var pBar = document.createElement("div");
+  pBar.className = "page-progress-bar";
+  document.body.appendChild(pBar);
+
+  document.addEventListener("click", function (e) {
+    if (reduceMotion) return;
+    var link = e.target.closest("a");
+    if (!link) return;
+    var href = link.getAttribute("href");
+    if (!href) return;
+
+    // Ignore anchors, external protocols, downloads, or special keys
+    if (
+      href.startsWith("#") ||
+      href.startsWith("tel:") ||
+      href.startsWith("mailto:") ||
+      link.target === "_blank" ||
+      link.hasAttribute("download") ||
+      e.ctrlKey || e.metaKey || e.shiftKey || e.altKey
+    ) {
+      return;
+    }
+
+    try {
+      var targetUrl = new URL(link.href, window.location.href);
+      if (targetUrl.origin === window.location.origin && targetUrl.pathname !== window.location.pathname) {
+        // Immediate visual feedback (YouTube / GitHub pattern)
+        pBar.classList.remove("is-finishing");
+        pBar.classList.add("is-loading");
+      }
+    } catch (err) {}
+  });
+
+  window.addEventListener("pageshow", function () {
+    pBar.classList.add("is-finishing");
+    setTimeout(function () {
+      pBar.classList.remove("is-loading", "is-finishing");
+    }, 300);
+  });
+
+  /* ---------- Sticky Liquid Glass Header Scroll Depth ---------- */
+  var stickyHeader = document.querySelector(".d-header-sticky");
+  if (stickyHeader) {
+    var checkScroll = function () {
+      if (window.scrollY > 30) {
+        stickyHeader.classList.add("is-scrolled");
+      } else {
+        stickyHeader.classList.remove("is-scrolled");
+      }
+    };
+    window.addEventListener("scroll", checkScroll, { passive: true });
+    checkScroll();
+  }
 })();

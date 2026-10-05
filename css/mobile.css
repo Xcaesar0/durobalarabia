@@ -266,7 +266,22 @@
   top: 0;
   width: 346px;
   height: 430px;
-  background: linear-gradient(158deg, #8a1c24 0%, #2c070b 100%);
+  overflow: hidden;
+}
+
+.m-listen__poster::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  background: url("../assets/img/video-thumb.jpg") center / cover no-repeat;
+  filter: blur(4px);
+}
+
+.m-listen__poster::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(158deg, rgba(138, 28, 36, 0.78) 0%, rgba(44, 7, 11, 0.85) 100%);
 }
 
 .m-listen__scrim {
@@ -1323,7 +1338,22 @@
 }
 
 .m-trip__poster {
-  background-image: linear-gradient(130.06deg, #dc5460 0%, #9b1824 72.464%);
+  overflow: hidden;
+}
+
+.m-trip__poster::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  background: url("../assets/img/trip-thumb.jpg") center / cover no-repeat;
+  filter: blur(4px);
+}
+
+.m-trip__poster::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(130.06deg, rgba(220, 84, 96, 0.7) 0%, rgba(155, 24, 36, 0.85) 72.464%);
 }
 
 .m-trip__scrim-t {
@@ -1761,4 +1791,126 @@
 .m-tm,
 .m-tq {
   scroll-margin-inline: calc(20px + var(--gx));
+}
+
+/* ==========================================================================
+   Programs Page (Mobile)
+   ========================================================================== */
+
+.m-progs-hero {
+  background: var(--background-inverse);
+  padding: 40px 20px 48px;
+  text-align: right;
+  position: relative;
+  overflow: hidden;
+}
+
+.m-progs-hero__badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(251, 248, 243, 0.12);
+  color: var(--terracotta-200);
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+
+.m-progs-hero__title {
+  font-size: 32px;
+  line-height: 1.25;
+  color: var(--text-inverse);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.m-progs-hero__sub {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-inverse-muted);
+}
+
+.m-progs-body {
+  padding: 24px 20px 100px;
+  background: var(--background-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.m-progs-card {
+  background: var(--background-elevated);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px -6px rgba(13, 0, 3, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  text-align: right;
+}
+
+.m-progs-card__img-wrap {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.m-progs-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.m-progs-card__badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(44, 7, 11, 0.88);
+  color: #fff;
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.m-progs-card__content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.m-progs-card__title {
+  font-size: 20px;
+  line-height: 1.35;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.m-progs-card__desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.m-progs-card__meta-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--background-secondary);
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.m-progs-card__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px;
+  background: var(--brand-primary);
+  color: #fff;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 6px;
 }
