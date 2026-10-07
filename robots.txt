@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://durobalrabia.netlify.app/sitemap.xml

@@ -49,6 +49,10 @@
     if (target === language) link.setAttribute("aria-current", "true");
     else link.removeAttribute("aria-current");
   });
+  document.querySelectorAll("[data-articles-link], [data-article-slug]").forEach(function (link) {
+    var slug = link.getAttribute("data-article-slug");
+    link.href = (language === "tr" ? "/tr" : "") + "/articles/" + (slug ? slug + "/" : "");
+  });
   clearTimeout(window.DUROB_LANGUAGE_TIMEOUT);
   document.documentElement.classList.remove("language-pending");
 })();

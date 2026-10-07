@@ -1,0 +1,6 @@
+[build]
+  command = "python scripts/build_articles.py --publish"
+  publish = "dist"
+
+[build.environment]
+  PYTHON_VERSION = "3.12"

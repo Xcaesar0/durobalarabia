@@ -92,3 +92,39 @@ Use the AR / TR controls in the desktop header or the mobile top corner. Both th
 `js/translations.js` contains the translation dictionary. Existing Turkish wording was matched against https://www.durobalarabia.com/tr/ and the old programs page at https://www.durobalarabia.com/tr/programs/. Existing Turkish paragraphs and testimonials are reused as published, including their original capitalization and wording. Sections left in Arabic on the old Turkish site, image descriptions, accessibility labels, and new program descriptions have new Turkish translations. No dates, prices, destinations or program claims were added by the language feature. Text inside photos and original brand artwork remains part of the image.
 
 `js/language.js` translates text nodes and accessibility attributes without replacing icons, emphasis or interactive elements. `css/language.css` adapts longer Turkish content, flowing feature cards and mobile testimonials without changing the Arabic layout.
+
+## Articles and future publishing dashboard
+
+Article content lives in `content/articles.json`; shared presentation lives in
+`templates/editorial.html` and `css/articles.css`. Generated HTML under `articles/`
+and `tr/articles/` is output, not the editing source. Each locale is served as complete
+HTML at its own URL; JavaScript is not required to read or index an article.
+
+Run `python scripts/build_articles.py` after content changes. Netlify runs
+`python scripts/build_articles.py --publish`, publishing only `dist/`. The build
+also generates the sitemap and robots file. Source content, templates, tests and
+build scripts are excluded from the published directory.
+
+Each record has a stable `id` and `slug`, `status` (`draft` or `published`), actual
+`publishedAt` date, author, image, original source URL and locale records. Each
+locale contains a title, description, image alt text, category and typed text
+blocks (`p`, `h2`, `h3`, `li`). Text is escaped during rendering. Drafts are omitted
+from HTML, listings and sitemap; stale generated pages are removed on rebuild.
+Keep slugs stable after publication. If a slug changes, add a permanent redirect
+from its previous URL before publishing.
+
+The three Arabic articles were migrated from the original website, preserving
+its publication date. Turkish articles are localized editorial adaptations.
+The current production hostname is centralized as `SITE` in the builder; update
+it and rebuild when the custom domain is connected.
+
+A future authenticated dashboard can edit these same records (or store the
+same fields in a database), upload images, preview drafts and trigger publication.
+Publishing must rebuild the HTML, language alternates, related links and sitemap.
+Authentication, authorization, uploads and database write access belong on the
+server. The public website must never contain admin credentials. No dashboard,
+login or database has been implemented in this change.
+
+Validation: `python -m unittest discover -s tests` checks generated metadata,
+structured data, links, language alternates and draft removal. Search Console
+sitemap submission and Google indexing are separate post-deployment steps.
