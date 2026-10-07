@@ -1,6 +1,6 @@
 <svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="Icon / book">
-<path id="Vector" d="M3.66667 5.5H14.6667C16.6116 5.5 18.4769 6.27262 19.8521 7.64788C21.2274 9.02315 22 10.8884 22 12.8333V38.5C22 37.0413 21.4205 35.6424 20.3891 34.6109C19.3576 33.5795 17.9587 33 16.5 33H3.66667V5.5Z" stroke="#FBF8F3" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector_2" d="M40.3333 5.5H29.3333C27.3884 5.5 25.5232 6.27262 24.1479 7.64788C22.7726 9.02315 22 10.8884 22 12.8333V38.5C22 37.0413 22.5795 35.6424 23.6109 34.6109C24.6424 33.5795 26.0413 33 27.5 33H40.3333V5.5Z" stroke="#FBF8F3" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector" d="M3.66667 5.5H14.6667C16.6116 5.5 18.4769 6.27262 19.8521 7.64788C21.2274 9.02315 22 10.8884 22 12.8333V38.5C22 37.0413 21.4205 35.6424 20.3891 34.6109C19.3576 33.5795 17.9587 33 16.5 33H3.66667V5.5Z" stroke="#f6f1e8" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M40.3333 5.5H29.3333C27.3884 5.5 25.5232 6.27262 24.1479 7.64788C22.7726 9.02315 22 10.8884 22 12.8333V38.5C22 37.0413 22.5795 35.6424 23.6109 34.6109C24.6424 33.5795 26.0413 33 27.5 33H40.3333V5.5Z" stroke="#f6f1e8" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 </svg>

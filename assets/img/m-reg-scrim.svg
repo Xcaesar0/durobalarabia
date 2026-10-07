@@ -2,9 +2,9 @@
 <path id="Scrim / bottom &#226;&#134;&#146; footer" d="M0 0H390V240H0V0Z" fill="url(#paint0_linear_0_13)"/>
 <defs>
 <linearGradient id="paint0_linear_0_13" x1="195" y1="5" x2="195" y2="245" gradientUnits="userSpaceOnUse">
-<stop stop-color="#2C070B" stop-opacity="0"/>
-<stop offset="0.8" stop-color="#2C070B" stop-opacity="0.92"/>
-<stop offset="1" stop-color="#2C070B"/>
+<stop stop-color="#2c0e0e" stop-opacity="0"/>
+<stop offset="0.8" stop-color="#2c0e0e" stop-opacity="0.92"/>
+<stop offset="1" stop-color="#2c0e0e"/>
 </linearGradient>
 </defs>
 </svg>

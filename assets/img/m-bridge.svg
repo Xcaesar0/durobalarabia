@@ -1,9 +1,9 @@
 <svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="390" height="80" viewBox="0 0 390 80" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="02 &#194;&#183; Bridge / Photo overlap" clip-path="url(#clip0_0_4)">
-<rect width="390" height="80" fill="#FBF8F3"/>
-<rect id="Surface / continues hero" width="390" height="130" fill="#4A0C12"/>
-<rect id="Trail / line" x="368" y="40" width="2" height="290" fill="#C8202F"/>
-<circle id="Trail / start node" cx="369" cy="40" r="7" fill="#C8202F"/>
+<rect width="390" height="80" fill="#f6f1e8"/>
+<rect id="Surface / continues hero" width="390" height="130" fill="#471616"/>
+<rect id="Trail / line" x="368" y="40" width="2" height="290" fill="#8e2c2c"/>
+<circle id="Trail / start node" cx="369" cy="40" r="7" fill="#8e2c2c"/>
 </g>
 <defs>
 <clipPath id="clip0_0_4">

@@ -1,6 +1,6 @@
 <svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="350" height="46" viewBox="0 0 350 46" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="Route marker">
-<circle id="Route / end" cx="5" cy="41" r="5" fill="#C8202F"/>
-<rect id="Route / dashed" x="10" y="40" width="280" height="2" fill="#D12A39"/>
+<circle id="Route / end" cx="5" cy="41" r="5" fill="#8e2c2c"/>
+<rect id="Route / dashed" x="10" y="40" width="280" height="2" fill="#9b3c3c"/>
 </g>
 </svg>

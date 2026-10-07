@@ -80,3 +80,7 @@ These are placeholders in the Figma file too:
 - **Latest news** shows the skeleton from Figma (loads from `/news` on the live site).
 - **Links** — Instagram / Facebook, "مسابقة النقاط", article links, "المزيد", TR language
   switch currently point to `#`.
+
+## 2026 brand colors
+
+Warm Cream `#F6F1E8` is the main surface; Deep Burgundy `#8E2C2C` is the primary heading and CTA color; Muted Gold `#C9A46A` is used for fine details; Soft Olive `#7C8A63` supports secondary accents. Darker shades keep small text and hover states readable. Shared CSS tokens, page gradients, and SVG icons use this palette; original logo and photographic assets retain their colors.
