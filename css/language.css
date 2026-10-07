@@ -16,7 +16,6 @@ html[lang="tr"] .page .tc { text-align: center; }
 html[lang="tr"] :is(.d-tq, .m-tq, .d-progs-meta-text, .d-progs-hero__content, .d-progs-grid-sec__head, .m-progs-card) { text-align: left; direction: ltr; }
 html[lang="tr"] .tr,
 html[lang="tr"] .mf,
-html[lang="tr"] .fbody,
 html[lang="tr"] .sp__t,
 html[lang="tr"] .m-art,
 html[lang="tr"] .m-articles,
@@ -43,16 +42,6 @@ html[lang="tr"] .m-hero__backdrop,
 html[lang="tr"] .m-hero__scrim-b { height: 100%; }
 
 /* Longer translated copy flows instead of clipping in fixed-height cards. */
-html[lang="tr"] .d-features { height: auto; padding-block: 80px; }
-html[lang="tr"] .d-features__row { height: auto !important; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-bottom: 24px; }
-html[lang="tr"] .d-features__row > .fcard { position: relative; inset: auto !important; width: auto !important; height: auto !important; min-height: 540px; }
-html[lang="tr"] .fbody { position: relative; width: auto; height: auto; }
-html[lang="tr"] .fcard--h { flex-direction: column; }
-html[lang="tr"] .fvis { flex: none; height: 260px; }
-html[lang="tr"] .fcard--h .fvis { width: 100%; height: 260px; }
-html[lang="tr"] .fcard--h .fbody { flex: none; height: auto; }
-html[lang="tr"] .ftitle { font-size: 24px; }
-html[lang="tr"] .ftext { font-size: 16px; }
 html[lang="tr"] .mf-pair { flex-direction: column; }
 html[lang="tr"] .mf--compact { width: 350px; }
 html[lang="tr"] .mf--compact .mf__top--compact,
@@ -98,14 +87,22 @@ html[lang="tr"] .m-testi__viewport { height: auto; min-height: 734px; }
   html[lang="tr"] .d-testi__byline { align-items: flex-start; }
 }
 
-/* One continuous Turkish grid avoids empty cells between the Arabic row groups. */
+/* Preserve the bento composition, mirroring its columns for Turkish reading order. */
 @media (min-width: 1024px) {
-  html[lang="tr"] .d-features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; gap: 24px; }
-  html[lang="tr"] .d-features__row { display: contents; }
-  html[lang="tr"] .d-features__row:last-child > .fcard:last-child { grid-column: 1 / -1; display: grid; grid-template-columns: 354px minmax(0, 1fr); align-items: center; min-height: 0; }
-  html[lang="tr"] .d-features__row:last-child > .fcard:last-child .fvis { height: 300px; }
-}
-@media (min-width: 1024px) {
-  html[lang="tr"] .d-features .fvis:not(.fvis--photo) .fglass { left: 50% !important; top: 50% !important; transform: translate(-50%, -50%); }
-  html[lang="tr"] .d-features .fvis:has(.favatar) .fglass { left: auto !important; top: auto !important; right: 16px; bottom: 16px; transform: none; }
+  html[lang="tr"] .d-features { height: auto; padding-block: 80px; display: flex; gap: 24px; }
+  html[lang="tr"] .d-features__row { display: grid; grid-template-columns: 486px 384px 282px; height: auto !important; gap: 24px; align-items: stretch; }
+  html[lang="tr"] .d-features__row > .fcard { position: relative; inset: auto !important; width: auto !important; height: auto !important; min-height: 600px; }
+  html[lang="tr"] .fbody { position: relative; width: auto; height: auto; }
+  html[lang="tr"] .ftitle { font-size: 23px; }
+  html[lang="tr"] .ftext { font-size: 16px; }
+  html[lang="tr"] .d-features .fvis { flex: 1 0 260px; min-height: 260px; }
+  html[lang="tr"] .d-features__row:nth-child(2) { grid-template-columns: 282px 486px 384px; grid-template-rows: auto auto; }
+  html[lang="tr"] .d-features__row:nth-child(2) > .fcard:first-child { grid-column: 1; grid-row: 1 / 3; }
+  html[lang="tr"] .d-features__row:nth-child(2) > .fcard:last-child { grid-column: 3; grid-row: 1 / 3; }
+  html[lang="tr"] .d-features__row:nth-child(2) > .fcard--h { grid-column: 2; display: flex; flex-direction: row; min-height: 330px; }
+  html[lang="tr"] .d-features .fcard--h .fvis { flex: 0 0 190px; width: 190px; min-height: 300px; height: auto; }
+  html[lang="tr"] .d-features .fcard--h .fbody { flex: 1; height: auto; padding: 10px 0; }
+  html[lang="tr"] .d-features .fcard--h .ftitle { font-size: 20px; }
+  html[lang="tr"] .d-features .fcard--h .ftext { font-size: 15px; }
+  html[lang="tr"] .d-features__row:last-child { grid-template-columns: 384px 282px 486px; }
 }
