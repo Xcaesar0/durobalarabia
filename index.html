@@ -11,9 +11,29 @@
     <meta name="theme-color" content="#471616" />
     <link rel="icon" type="image/png" href="assets/img/logo.png" />
     <link rel="preload" href="assets/fonts/readex-pro-arabic.woff2" as="font" type="font/woff2" crossorigin />
+    <style>html.language-pending body { visibility: hidden; }</style>
+    <script>
+      // Resolve the language before the browser can paint Arabic page content.
+      (function () {
+        var requested = new URLSearchParams(location.search).get("lang");
+        var saved;
+        try { saved = localStorage.getItem("durob-language"); } catch (error) {}
+        var language = requested === "ar" || requested === "tr" ? requested : saved === "tr" ? "tr" : "ar";
+        window.DUROB_LANGUAGE = language;
+        document.documentElement.lang = language;
+        document.documentElement.dir = language === "tr" ? "ltr" : "rtl";
+        if (language === "tr") {
+          document.documentElement.classList.add("language-pending");
+          // Recover readable content if a language asset cannot load.
+          window.DUROB_LANGUAGE_TIMEOUT = setTimeout(function () {
+            document.documentElement.classList.remove("language-pending");
+          }, 5000);
+        }
+      })();
+    </script>
     <script src="js/scale.js"></script>
     <script defer src="js/translations.js"></script>
-    <script defer src="js/language.js"></script>
+    <script defer blocking="render" src="js/language.js"></script>
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/desktop.css" />
     <link rel="stylesheet" href="css/mobile.css" />

@@ -4,7 +4,7 @@
   var requested = new URLSearchParams(location.search).get("lang");
   var saved;
   try { saved = localStorage.getItem("durob-language"); } catch (error) {}
-  var language = requested === "ar" || requested === "tr" ? requested : saved === "tr" ? "tr" : "ar";
+  var language = window.DUROB_LANGUAGE || (requested === "ar" || requested === "tr" ? requested : saved === "tr" ? "tr" : "ar");
   var dictionary = window.DUROB_TR || {};
   var normalize = function (text) { return text.replace(/\s+/g, " ").trim(); };
   function translate(text) {
@@ -49,4 +49,6 @@
     if (target === language) link.setAttribute("aria-current", "true");
     else link.removeAttribute("aria-current");
   });
+  clearTimeout(window.DUROB_LANGUAGE_TIMEOUT);
+  document.documentElement.classList.remove("language-pending");
 })();
