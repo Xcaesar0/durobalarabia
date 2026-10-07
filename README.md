@@ -77,7 +77,7 @@ These are placeholders in the Figma file too:
 
 - **Portrait photos** (companions, team, testimonials 2–10, stats photo) use the Figma
   gradient placeholders.
-- **Latest news** shows the skeleton from Figma (loads from `/news` on the live site).
+- The empty **Latest news** section has been removed from the homepage.
 - **Links** — Instagram / Facebook, "مسابقة النقاط", article links, "المزيد", TR language
   switch currently point to `#`.
 
