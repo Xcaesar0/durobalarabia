@@ -12,11 +12,15 @@
     <link rel="icon" type="image/png" href="assets/img/logo.png" />
     <link rel="preload" href="assets/fonts/readex-pro-arabic.woff2" as="font" type="font/woff2" crossorigin />
     <script src="js/scale.js"></script>
+    <script defer src="js/translations.js"></script>
+    <script defer src="js/language.js"></script>
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/desktop.css" />
     <link rel="stylesheet" href="css/mobile.css" />
+    <link rel="stylesheet" href="css/language.css" />
   </head>
   <body>
+    <div class="mobile-language"><nav class="language-switch" aria-label="Language / Dil"><a href="?lang=ar" data-language="ar" lang="ar" dir="rtl" aria-label="العربية">AR</a><a href="?lang=tr" data-language="tr" lang="tr" aria-label="Türkçe">TR</a></nav></div>
     <!-- =====================================================================
          DESKTOP
          ===================================================================== -->
@@ -24,6 +28,7 @@
       <header class="d-header-sticky" id="desktop-header">
         <div class="d-header-liquid">
           <div class="d-header__side">
+            <nav class="language-switch" aria-label="Language / Dil"><a href="?lang=ar" data-language="ar" lang="ar" dir="rtl" aria-label="العربية">AR</a><a href="?lang=tr" data-language="tr" lang="tr" aria-label="Türkçe">TR</a></nav>
             <a href="#" class="d-glass-btn">الدخول إلى مسابقة النقاط</a>
           </div>
           <nav class="d-nav" aria-label="القائمة الرئيسية">

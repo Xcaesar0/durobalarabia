@@ -78,9 +78,17 @@ These are placeholders in the Figma file too:
 - **Portrait photos** (companions, team, testimonials 2–10, stats photo) use the Figma
   gradient placeholders.
 - The empty **Latest news** section has been removed from the homepage.
-- **Links** — Instagram / Facebook, "مسابقة النقاط", article links, "المزيد", TR language
-  switch currently point to `#`.
+- **Links** — Instagram / Facebook, "مسابقة النقاط", article links and "المزيد"
+  currently point to `#`.
 
 ## 2026 brand colors
 
 Warm Cream `#F6F1E8` is the main surface; Deep Burgundy `#8E2C2C` is the primary heading and CTA color; Muted Gold `#C9A46A` is used for fine details; Soft Olive `#7C8A63` supports secondary accents. Darker shades keep small text and hover states readable. Shared CSS tokens, page gradients, and SVG icons use this palette; original logo and photographic assets retain their colors.
+
+## Arabic and Turkish
+
+Use the AR / TR controls in the desktop header or the mobile top corner. Both the homepage and programs page support `?lang=ar` and `?lang=tr`. The explicit URL language takes priority over the saved browser preference; page links preserve the choice even when browser storage is unavailable. Arabic remains the default and uses RTL; Turkish uses LTR.
+
+`js/translations.js` contains the translation dictionary. Existing Turkish wording was matched against https://www.durobalarabia.com/tr/ and the old programs page at https://www.durobalarabia.com/tr/programs/. Existing Turkish paragraphs and testimonials are reused as published, including their original capitalization and wording. Sections left in Arabic on the old Turkish site, image descriptions, accessibility labels, and new program descriptions have new Turkish translations. No dates, prices, destinations or program claims were added by the language feature. Text inside photos and original brand artwork remains part of the image.
+
+`js/language.js` translates text nodes and accessibility attributes without replacing icons, emphasis or interactive elements. `css/language.css` adapts longer Turkish content, flowing feature cards and mobile testimonials without changing the Arabic layout.

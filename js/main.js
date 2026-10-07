@@ -2,6 +2,7 @@
 (function () {
   "use strict";
 
+  var isTurkish = document.documentElement.lang === "tr";
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ---------- Video lightbox (YouTube) ---------- */
@@ -27,10 +28,10 @@
     modal.setAttribute("aria-modal", "true");
     modal.innerHTML =
       '<div class="vmodal__box">' +
-      '<button type="button" class="vmodal__close" aria-label="إغلاق">×</button>' +
+      '<button type="button" class="vmodal__close" aria-label="' + (isTurkish ? 'Kapat' : 'إغلاق') + '">×</button>' +
       '<iframe src="https://www.youtube-nocookie.com/embed/' +
       encodeURIComponent(id) +
-      '?autoplay=1&rel=0" title="YouTube video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>' +
+      '?autoplay=1&rel=0" title="Video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>' +
       "</div>";
     modal.addEventListener("click", function (e) {
       if (e.target === modal || e.target.classList.contains("vmodal__close")) closeModal();
@@ -72,7 +73,7 @@
   function scrollTrack(id, dir) {
     var track = document.getElementById(id);
     if (!track) return;
-    track.scrollBy({ left: -dir * stepOf(track), behavior: reduceMotion ? "auto" : "smooth" });
+    track.scrollBy({ left: (getComputedStyle(track).direction === "rtl" ? -dir : dir) * stepOf(track), behavior: reduceMotion ? "auto" : "smooth" });
   }
 
   document.addEventListener("click", function (e) {
@@ -105,7 +106,7 @@
       if (progress) {
         var bar = document.getElementById(progress);
         var fill = bar && bar.firstElementChild;
-        if (fill) fill.style.right = ratio * (bar.clientWidth - fill.clientWidth) + "px";
+        if (fill) fill.style[getComputedStyle(track).direction === "rtl" ? "right" : "left"] = ratio * (bar.clientWidth - fill.clientWidth) + "px";
       }
       if (dots) {
         var wrap = document.getElementById(dots);
