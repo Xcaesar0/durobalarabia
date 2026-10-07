@@ -97,3 +97,15 @@ html[lang="tr"] .m-testi__viewport { height: auto; min-height: 734px; }
   html[lang="tr"] .d-stats > .btn { top: 255px !important; }
   html[lang="tr"] .d-testi__byline { align-items: flex-start; }
 }
+
+/* One continuous Turkish grid avoids empty cells between the Arabic row groups. */
+@media (min-width: 1024px) {
+  html[lang="tr"] .d-features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; gap: 24px; }
+  html[lang="tr"] .d-features__row { display: contents; }
+  html[lang="tr"] .d-features__row:last-child > .fcard:last-child { grid-column: 1 / -1; display: grid; grid-template-columns: 354px minmax(0, 1fr); align-items: center; min-height: 0; }
+  html[lang="tr"] .d-features__row:last-child > .fcard:last-child .fvis { height: 300px; }
+}
+@media (min-width: 1024px) {
+  html[lang="tr"] .d-features .fvis:not(.fvis--photo) .fglass { left: 50% !important; top: 50% !important; transform: translate(-50%, -50%); }
+  html[lang="tr"] .d-features .fvis:has(.favatar) .fglass { left: auto !important; top: auto !important; right: 16px; bottom: 16px; transform: none; }
+}
