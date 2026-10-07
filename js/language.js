@@ -36,7 +36,7 @@
     var raw = link.getAttribute("href");
     if (!raw || raw[0] === "#" || /^(https?:|tel:|mailto:)/i.test(raw)) return;
     var url = new URL(raw, location.href);
-    if (url.origin === location.origin && /\/(index|programs)\.html$/.test(url.pathname)) {
+    if (url.origin === location.origin && /\/(index|programs|contact)\.html$/.test(url.pathname)) {
       url.searchParams.set("lang", language);
       link.href = url.pathname + url.search + url.hash;
     }

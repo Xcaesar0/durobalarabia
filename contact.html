@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>اتصل بنا — دروب العربية</title>
+    <meta
+      name="description"
+      content="تواصل مع دروب العربية للاستفسار عن البرامج والتسجيل."
+    />
+    <meta name="theme-color" content="#471616" />
+    <link rel="icon" type="image/png" href="assets/img/logo.png" />
+    <link rel="preload" href="assets/fonts/readex-pro-arabic.woff2" as="font" type="font/woff2" crossorigin />
+    <style>html.language-pending body { visibility: hidden; }</style>
+    <script>
+      // Resolve the language before the browser can paint Arabic page content.
+      (function () {
+        var requested = new URLSearchParams(location.search).get("lang");
+        var saved;
+        try { saved = localStorage.getItem("durob-language"); } catch (error) {}
+        var language = requested === "ar" || requested === "tr" ? requested : saved === "tr" ? "tr" : "ar";
+        window.DUROB_LANGUAGE = language;
+        document.documentElement.lang = language;
+        document.documentElement.dir = language === "tr" ? "ltr" : "rtl";
+        if (language === "tr") {
+          document.documentElement.classList.add("language-pending");
+          // Recover readable content if a language asset cannot load.
+          window.DUROB_LANGUAGE_TIMEOUT = setTimeout(function () {
+            document.documentElement.classList.remove("language-pending");
+          }, 5000);
+        }
+      })();
+    </script>
+    <script src="js/scale.js"></script>
+    <script defer src="js/translations.js"></script>
+    <script defer blocking="render" src="js/language.js"></script>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/desktop.css" />
+    <link rel="stylesheet" href="css/mobile.css" />
+    <link rel="stylesheet" href="css/language.css" />
+  <link rel="stylesheet" href="css/contact.css" /></head>
+<body><div class="mobile-language"><nav class="language-switch" aria-label="Language / Dil"><a href="?lang=ar" data-language="ar" lang="ar" dir="rtl" aria-label="العربية">AR</a><a href="?lang=tr" data-language="tr" lang="tr" aria-label="Türkçe">TR</a></nav></div><div class="page page--desktop"><header class="d-header-sticky" id="desktop-header">
+        <div class="d-header-liquid">
+          <div class="d-header__side">
+            <nav class="language-switch" aria-label="Language / Dil"><a href="?lang=ar" data-language="ar" lang="ar" dir="rtl" aria-label="العربية">AR</a><a href="?lang=tr" data-language="tr" lang="tr" aria-label="Türkçe">TR</a></nav>
+            <a href="#" class="d-glass-btn">الدخول إلى مسابقة النقاط</a>
+          </div>
+          <nav class="d-nav" aria-label="القائمة الرئيسية">
+            <a href="contact.html" class="is-active" aria-current="page">اتصل بنا</a>
+            <a href="programs.html">البرامج<i></i></a>
+            <a href="index.html#d-features">المميزات</a>
+            <a href="index.html">الرئيسية</a>
+          </nav>
+          <a href="index.html" class="d-logo" aria-label="دروب العربية">
+            <span class="w6">دروب العربية</span>
+            <img src="assets/img/logo.png" alt="" width="49" height="56" />
+          </a>
+        </div>
+      </header></div><main class="contact-page"><section class="contact-hero"><div class="contact-wrap"><span class="contact-eyebrow">دروب العربية</span><h1>رحلتك تبدأ بمحادثة</h1><p>نحن هنا للإجابة عن أسئلتك ومساعدتك في اختيار البرنامج المناسب لك.</p><a href="#enquiry">أرسل استفسارك ↙</a></div><div class="contact-orbit" aria-hidden="true"></div></section><div class="contact-wrap contact-content"><section class="contact-methods" aria-label="طرق التواصل"><a href="tel:+905347308092" class="contact-card"><span class="contact-card-icon" aria-hidden="true">↗</span><h2>الجوال</h2><span dir="ltr">+90 534 730 80 92</span></a><a href="tel:+902125214116" class="contact-card"><span class="contact-card-icon" aria-hidden="true">↗</span><h2>الهاتف</h2><span dir="ltr">+90 212 521 41 16</span></a><div class="contact-card"><span class="contact-card-icon" aria-hidden="true">↗</span><h2>الفاكس</h2><span dir="ltr">+90 212 521 41 36</span></div></section><div class="contact-grid"><section class="contact-form-panel" id="enquiry"><span class="contact-eyebrow">لنتعرف عليك</span><h2>أخبرنا عن خططك</h2><p>شاركنا التفاصيل التالية لنتواصل معك بشأن البرنامج.</p><div class="contact-success" role="status" hidden>تم إرسال استفسارك بنجاح. شكراً لتواصلك معنا.</div><form name="contact" method="POST" data-netlify="true" netlify-honeypot="website" action="contact.html?sent=1"><input type="hidden" name="form-name" value="contact" /><input type="hidden" name="language" value="ar" /><div hidden><label>Website<input name="website" /></label></div><label class="contact-field"><span>الاسم و الكنية</span><input name="name" type="text" autocomplete="name" required /></label><label class="contact-field"><span>عنوان بريد إلكتروني</span><input name="email" type="email" autocomplete="email" required /></label><label class="contact-field"><span>رقم الهاتف</span><input name="phone" type="tel" autocomplete="tel" required /></label><fieldset><legend>مستوى اللغة المقدر لديك</legend><div class="contact-options"><label><input type="radio" name="level" value="A1" required /><span>A1</span></label><label><input type="radio" name="level" value="A2" required /><span>A2</span></label><label><input type="radio" name="level" value="B1" required /><span>B1</span></label><label><input type="radio" name="level" value="B2" required /><span>B2</span></label><label><input type="radio" name="level" value="C1" required /><span>C1</span></label><label><input type="radio" name="level" value="other" required /><span>غير ذلك</span></label></div></fieldset><fieldset><legend>برنامجك المفضل</legend><div class="contact-options"><label><input type="radio" name="program" value="spring" required /><span>الربيع</span></label><label><input type="radio" name="program" value="summer" required /><span>البرنامج الصيفي</span></label></div></fieldset><fieldset><legend>عدد الاشخاص</legend><div class="contact-options"><label><input type="radio" name="participation" value="individual" required /><span>سأشارك بشكل فردي</span></label><label><input type="radio" name="participation" value="group" required /><span>سوف نشارك كمجموعة</span></label></div></fieldset><fieldset><legend>حالة المشاركة</legend><div class="contact-options"><label><input type="radio" name="attendance" value="certain" required /><span>سأحضر بالتأكيد</span></label><label><input type="radio" name="attendance" value="undecided" required /><span>أنا متردد</span></label></div></fieldset><label class="contact-field contact-group" hidden><span>عدد الأشخاص إذا كنت ستشارك كمجموعة</span><input name="group-size" type="number" min="2" max="100" /></label><label class="contact-field"><span>هل لديك أي أسئلة أو طلبات؟</span><textarea name="message" rows="4"></textarea></label><button type="submit" class="contact-submit">ارسال ↗</button></form></section><aside class="contact-aside"><div class="contact-address"><span class="contact-eyebrow">تفضل بزيارتنا</span><h2>نلتقي في إسطنبول</h2><p dir="ltr">Akşemsettin, Akdeniz Cd. No:101, 34080 Fatih/İstanbul, Türkiye</p><a href="https://maps.google.com/?q=Ak%C5%9Femsettin,+Akdeniz+Cd.+No:101,+34080+Fatih%2F%C4%B0stanbul" target="_blank" rel="noopener">عرض على الخريطة ↗</a></div><div class="contact-photo"><img src="assets/img/manuscript.jpg" alt="مخطوطة عربية وكوب شاي" /><h2>معا نتعلم اللغة ونعيش الثقافة الاردنية</h2></div></aside></div></div><footer class="contact-footer contact-wrap"><a href="index.html">دروب العربية</a><p>تعلم اللغة. عش الثقافة. اكتشف العالم.</p><a href="programs.html">اكتشف برامجنا ↗</a></footer></main><nav class="m-nav" aria-label="القائمة الرئيسية">
+      <a href="#" class="m-nav__item m-nav__item--wide"><img src="assets/img/icon-trophy.svg" alt="" class="m-nav__trophy" /><span>مسابقة النقاط</span></a>
+      <a href="contact.html" class="m-nav__item is-active" aria-current="page"><img src="assets/img/icon-phone.svg" alt="" /><span>اتصل بنا</span></a>
+      <a href="programs.html" class="m-nav__item"><img src="assets/img/icon-cal-w.svg" alt="" /><span>البرامج</span></a>
+      <a href="index.html#m-features" class="m-nav__item"><img src="assets/img/icon-check-w.svg" alt="" /><span>المميزات</span></a>
+      <a href="index.html" class="m-nav__item"><img src="assets/img/icon-home.svg" alt="" /><span>الرئيسية</span></a>
+    </nav><script defer src="js/main.js"></script><script defer src="js/contact.js"></script></body></html>
