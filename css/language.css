@@ -70,3 +70,30 @@ html[lang="tr"] .d-trip__big { font-size: 95px; }
 html[lang="tr"] .d-testi__quote { font-size: 26px; }
 html[lang="tr"] .m-testi { height: auto; }
 html[lang="tr"] .m-testi__viewport { height: auto; min-height: 734px; }
+
+/* Turkish desktop needs its own text measures within the fixed Arabic artboard. */
+@media (min-width: 1024px) {
+  html[lang="tr"] .d-program__kicker { left: 680px; right: auto; width: 640px; top: 130px; }
+  html[lang="tr"] .d-program__big { left: 680px; right: auto; width: 640px; font-size: 88px; line-height: 1.15; white-space: normal; }
+  html[lang="tr"] .d-program__big:nth-of-type(2) { top: 210px !important; }
+  html[lang="tr"] .d-program__big:nth-of-type(3) { top: 320px !important; }
+  html[lang="tr"] .d-team__title { left: 184px; width: 1072px; top: 130px; font-size: 64px; line-height: 1.15; }
+  html[lang="tr"] .d-companions__title { font-size: 56px; }
+  html[lang="tr"] .d-trip__heads { left: 680px; top: 145px; width: 640px; height: auto; align-items: flex-start; gap: 18px; }
+  html[lang="tr"] .d-trip__heads > * { width: 100%; }
+  html[lang="tr"] .d-trip__kicker { font-size: 34px; }
+  html[lang="tr"] .d-trip__big { font-size: 70px; line-height: 1.15; }
+  html[lang="tr"] .d-listen__title { font-size: 56px; }
+  html[lang="tr"] .d-listen__sub { font-size: 28px; }
+  html[lang="tr"] .d-academy__col { top: 180px; align-items: flex-start; }
+  html[lang="tr"] .d-academy__title { font-size: 38px; }
+  html[lang="tr"] .d-academy__text { width: 680px; font-size: 19px; }
+  html[lang="tr"] .d-book__title { font-size: 52px; }
+  html[lang="tr"] .d-support__title { font-size: 34px; }
+  html[lang="tr"] .d-testi__title { font-size: 48px; }
+}
+@media (min-width: 1024px) {
+  html[lang="tr"] .dest__name { font-size: 20px; text-align: left; }
+  html[lang="tr"] .d-stats > .btn { top: 255px !important; }
+  html[lang="tr"] .d-testi__byline { align-items: flex-start; }
+}
