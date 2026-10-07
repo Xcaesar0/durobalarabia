@@ -64,3 +64,4 @@
 }
 
 .contact-page { background: var(--background-primary); }
+@media(min-width: 1024px) { body:has(.contact-page) .d-header-sticky { position: fixed; left: 0; right: 0; margin-bottom: 0; } }
