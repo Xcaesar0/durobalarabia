@@ -1,18 +1,18 @@
 # دروب العربية — Homepage
 
-Static, dependency-free build of the **Homepage** from the Figma file
+Static website with a Supabase-powered administrator login. The **Homepage** follows the Figma file
 [durobalarabia](https://www.figma.com/design/SMCW0TA7l2dkhWfe3qwIFi/durobalarabia)
 (pages "01 — Mobile Screens" and "02 — Desktop Screens", tokens from "00 — Foundations").
 
 ## Run it
 
-Open `index.html` in a browser, or serve the folder with any static server:
+Install dependencies with `npm ci`, run `npm run build`, then serve `dist/` with any static server:
 
 ```sh
-python3 -m http.server 8080   # then visit http://localhost:8080
+python3 -m http.server 8080 --directory dist   # then visit http://localhost:8080
 ```
 
-It can be deployed as-is to GitHub Pages, Netlify, Vercel, cPanel, etc. — there is no build step.
+Netlify installs the locked dependencies and builds `dist/` automatically.
 
 ## How it matches Figma
 
@@ -101,7 +101,7 @@ and `tr/articles/` is output, not the editing source. Each locale is served as c
 HTML at its own URL; JavaScript is not required to read or index an article.
 
 Run `python scripts/build_articles.py` after content changes. Netlify runs
-`python scripts/build_articles.py --publish`, publishing only `dist/`. The build
+`npm run build`, publishing only `dist/`. The build
 also generates the sitemap and robots file. Source content, templates, tests and
 build scripts are excluded from the published directory.
 
@@ -128,3 +128,19 @@ login or database has been implemented in this change.
 Validation: `python -m unittest discover -s tests` checks generated metadata,
 structured data, links, language alternates and draft removal. Search Console
 sitemap submission and Google indexing are separate post-deployment steps.
+
+## Administrator login
+
+`/admin/` is a separate responsive Arabic/Turkish login page with Supabase email/password authentication, password recovery, invitation/password setup, sign-out and a verified administrator landing page. No public sign-up form is provided. Article editing is not implemented yet; the dashboard links to the published article archive.
+
+Before enabling login:
+1. Create the dedicated Supabase project with Data API enabled and automatic table exposure disabled.
+2. Apply `supabase/admin_access.sql` to enable membership RLS and authenticated SELECT access. Only the database operator can grant or revoke membership. Authentication alone does not grant administrator access.
+3. Set `config/supabase-public.json` to the project's URL and modern `sb_publishable_...` key, or set `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` in Netlify. No privileged key is accepted by the browser build.
+4. In Supabase Auth, set Site URL to `https://durobalrabia.netlify.app/admin/` and allow `https://durobalrabia.netlify.app/admin/**` as a redirect URL. Add localhost explicitly only for development. Disable public sign-ups. Configure a supported SMTP sender for invitation/recovery email delivery; Supabase's default sender has recipient restrictions.
+5. Invite the approved administrator through Supabase Auth Users, then add their auth user ID to `public.admin_members` using the commented query in the SQL file. The invitation link lets the administrator set their own password privately.
+6. Rebuild and verify a real administrator login, non-member rejection, refresh, password recovery and logout. Until configuration is supplied, the login form stays disabled and displays a setup message.
+
+Membership queries use `auth.getUser()` and a database policy restricting each authenticated user to their own membership. No client-side membership changes are allowed. Future content/storage policies must also require administrator membership; the visible dashboard alone is not a security boundary. Admin HTML carries noindex/no-store headers and is excluded from the sitemap. Passwords and tokens are never written to logs or committed. Supabase manages session storage and refresh.
+
+Run `npm run test:admin` for authentication-state tests and `python -m unittest discover -s tests` for article generation checks. Authentication-state tests use a mock Supabase client; real service/email validation requires the configured project and administrator account.

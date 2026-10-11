@@ -1,0 +1,11 @@
+{
+  "name": "durob-alarabia",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build_admin.mjs && python scripts/build_articles.py --publish",
+    "build:admin": "node scripts/build_admin.mjs",
+    "test:admin": "node --test tests/admin.test.mjs"
+  },
+  "dependencies": { "@supabase/supabase-js": "2.117.3" },
+  "devDependencies": { "esbuild": "0.28.2" }
+}

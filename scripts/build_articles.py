@@ -79,5 +79,5 @@ if __name__=='__main__':
     if f.is_file(): f.unlink()
     elif f.is_dir(): f.rmdir()
   out.mkdir(exist_ok=True)
-  for folder in ['assets','css','js','articles','tr']:shutil.copytree(ROOT/folder,out/folder,dirs_exist_ok=True)
+  for folder in ['assets','css','js','articles','tr','admin']:shutil.copytree(ROOT/folder,out/folder,dirs_exist_ok=True)
   for f in [*ROOT.glob('*.html'),ROOT/'robots.txt',ROOT/'sitemap.xml']:shutil.copy2(f,out/f.name)
