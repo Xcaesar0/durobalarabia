@@ -42,7 +42,10 @@ async function verifyAccess() {
  try {
   const {data,error}=await client.auth.getUser();
   if(current!==version)return;
-  if(error || !data.user){clearPasswords();show('login');status(linkError?'expired':error && error.status!==401 && error.status!==403?'unavailable':'',error?'error':'');return;}
+  if(error || !data.user){
+   const connectionError=error && error.name!=='AuthSessionMissingError' && error.status!==401 && error.status!==403;
+   clearPasswords();show('login');status(linkError?'expired':connectionError?'unavailable':'',linkError || connectionError?'error':'');return;
+  }
   const {data:member,error:memberError}=await client.from('admin_members').select('user_id').eq('user_id',data.user.id).maybeSingle();
   if(current!==version)return;
   if(memberError){show('login');status('unavailable','error');return;}
