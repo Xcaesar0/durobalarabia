@@ -122,25 +122,26 @@ A future authenticated dashboard can edit these same records (or store the
 same fields in a database), upload images, preview drafts and trigger publication.
 Publishing must rebuild the HTML, language alternates, related links and sitemap.
 Authentication, authorization, uploads and database write access belong on the
-server. The public website must never contain admin credentials. No dashboard,
-login or database has been implemented in this change.
+server. The public website must never contain admin credentials. Article editing and database publishing remain future work.
 
 Validation: `python -m unittest discover -s tests` checks generated metadata,
 structured data, links, language alternates and draft removal. Search Console
 sitemap submission and Google indexing are separate post-deployment steps.
 
-## Administrator login
+## Single-administrator login
 
-`/admin/` is a separate responsive Arabic/Turkish login page with Supabase email/password authentication, password recovery, invitation/password setup, sign-out and a verified administrator landing page. No public sign-up form is provided. Article editing is not implemented yet; the dashboard links to the published article archive.
+`/admin/` is a responsive Arabic/Turkish page with username `admin` and a password. One manually created Supabase account backs this username. The account identifier resembles an email address because Supabase's password API requires it, but no real inbox, confirmation email, invitations, recovery emails or SMTP setup are used. Supabase securely stores the password and manages sessions; the browser never contains a password or a privileged key.
 
-Before enabling login:
-1. Create the dedicated Supabase project with Data API enabled and automatic table exposure disabled.
-2. Apply `supabase/admin_access.sql` to enable membership RLS and authenticated SELECT access. Only the database operator can grant or revoke membership. Authentication alone does not grant administrator access.
-3. Set `config/supabase-public.json` to the project's URL and modern `sb_publishable_...` key, or set `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` in Netlify. No privileged key is accepted by the browser build.
-4. In Supabase Auth, set Site URL to `https://durobalrabia.netlify.app/admin/` and allow `https://durobalrabia.netlify.app/admin/**` as a redirect URL. Add localhost explicitly only for development. Disable public sign-ups. Configure a supported SMTP sender for invitation/recovery email delivery; Supabase's default sender has recipient restrictions.
-5. Invite the approved administrator through Supabase Auth Users, then add their auth user ID to `public.admin_members` using the commented query in the SQL file. The invitation link lets the administrator set their own password privately.
-6. Rebuild and verify a real administrator login, non-member rejection, refresh, password recovery and logout. Until configuration is supplied, the login form stays disabled and displays a setup message.
+Project: `kxjikcdwshbwcfsvozwu` (durobalarabia). Public configuration is in `config/supabase-public.json`; only the URL, publishable key, username and internal account identifier are included. Netlify can override URL/key with `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY`.
 
-Membership queries use `auth.getUser()` and a database policy restricting each authenticated user to their own membership. No client-side membership changes are allowed. Future content/storage policies must also require administrator membership; the visible dashboard alone is not a security boundary. Admin HTML carries noindex/no-store headers and is excluded from the sitemap. Passwords and tokens are never written to logs or committed. Supabase manages session storage and refresh.
+Account setup:
+1. Disable public sign-ups in Supabase Auth Providers.
+2. In Auth Users, choose Create new user, enter the configured internal `loginId`, set the password privately and keep Auto confirm user enabled. This form sends no email.
+3. Grant that account membership in `public.admin_members` using the operator-only query in `supabase/admin_access.sql`.
+4. Visit `/admin/`, sign in as `admin`, verify refresh and sign-out. A signed-in administrator can change their password in the panel. If the password is forgotten, the project owner resets it in Supabase; there is no email recovery flow.
 
-Run `npm run test:admin` for authentication-state tests and `python -m unittest discover -s tests` for article generation checks. Authentication-state tests use a mock Supabase client; real service/email validation requires the configured project and administrator account.
+The deployed schema enables RLS and grants only authenticated SELECT on a user's own membership. Public and authenticated clients cannot grant themselves admin privileges. Future content/storage policies must also require administrator membership; a visible dashboard alone is not a security boundary. Admin HTML carries noindex/no-store headers and is excluded from the sitemap. Article editing is not implemented yet; the verified dashboard links to published articles.
+
+The project's automatic-RLS trigger function has API EXECUTE privileges revoked so anonymous visitors and signed-in users cannot invoke this privileged helper directly. This does not disable automatic RLS on newly created tables.
+
+Run `npm run test:admin` for login-state checks and `python -m unittest discover -s tests` for article generation checks. Tests use a mock Supabase client; successful real login requires the manually created account and approved membership.

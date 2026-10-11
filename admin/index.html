@@ -24,20 +24,16 @@
         <h2 id="login-heading" data-i18n="login">تسجيل الدخول</h2><p id="form-description" class="muted" data-i18n="loginBody">أهلاً بعودتك. أدخل بيانات حساب الإدارة.</p>
         <p id="auth-status" class="status" role="status" aria-live="polite">جارٍ التحقق من الاتصال…</p>
         <form id="login-form" hidden>
-          <label for="email" data-i18n="email">البريد الإلكتروني</label><input id="email" type="email" name="email" autocomplete="username" dir="ltr" required maxlength="254" placeholder="name@example.com" />
+          <label for="username" data-i18n="username">اسم المستخدم</label><input id="username" type="text" name="username" autocomplete="username" dir="ltr" required maxlength="64" placeholder="admin" autocapitalize="none" spellcheck="false" />
           <label for="password" data-i18n="password">كلمة المرور</label><div class="password-field"><input id="password" type="password" name="password" autocomplete="current-password" required maxlength="128" /><button type="button" id="show-password" data-i18n="show" aria-pressed="false">إظهار</button></div>
-          <button class="primary-button" type="submit" data-i18n="signIn">دخول إلى لوحة الإدارة</button><button class="text-button" id="forgot-password" type="button" data-i18n="forgot">نسيت كلمة المرور؟</button>
-        </form>
-        <form id="reset-form" hidden>
-          <label for="reset-email" data-i18n="email">البريد الإلكتروني</label><input id="reset-email" type="email" autocomplete="email" dir="ltr" required maxlength="254" />
-          <button class="primary-button" type="submit" data-i18n="sendReset">إرسال رابط إعادة التعيين</button><button class="text-button" type="button" id="back-login" data-i18n="backLogin">العودة لتسجيل الدخول</button>
+          <button class="primary-button" type="submit" data-i18n="signIn">دخول إلى لوحة الإدارة</button>
         </form>
         <form id="password-form" hidden>
           <label for="new-password" data-i18n="newPassword">كلمة المرور الجديدة</label><input id="new-password" type="password" autocomplete="new-password" minlength="12" maxlength="128" required />
           <p class="field-help" data-i18n="passwordHelp">استخدم 12 حرفاً على الأقل.</p><label for="confirm-password" data-i18n="confirmPassword">تأكيد كلمة المرور</label><input id="confirm-password" type="password" autocomplete="new-password" minlength="12" maxlength="128" required />
           <button class="primary-button" type="submit" data-i18n="savePassword">حفظ كلمة المرور</button><button class="text-button" type="button" id="cancel-password" data-i18n="backLogin">العودة لتسجيل الدخول</button>
         </form>
-        <p class="auth-note" data-i18n="note">لا تملك حساباً؟ تواصل مع مسؤول الموقع للحصول على صلاحية الدخول.</p>
+        <p class="auth-note" data-i18n="note">دخول مخصص لمسؤول الموقع.</p>
         <noscript><p>يرجى تفعيل JavaScript لتسجيل الدخول. / Giriş için JavaScript'i etkinleştirin.</p></noscript>
       </div>
     </section>
