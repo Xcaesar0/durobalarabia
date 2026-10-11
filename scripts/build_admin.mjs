@@ -8,4 +8,5 @@ if (url && !/^https:\/\/[a-z0-9-]+\.supabase\.co$/.test(url)) throw new Error('I
 if (key && !key.startsWith('sb_publishable_')) throw new Error('Use a modern Supabase publishable key, never a secret/service key');
 await build({ entryPoints: ['js/admin.js'], bundle: true, minify: true, format: 'esm', target: ['es2022'], outfile: 'assets/admin.js', define: { ADMIN_SUPABASE_URL: JSON.stringify(url), ADMIN_SUPABASE_KEY: JSON.stringify(key), ADMIN_USERNAME: JSON.stringify(config.username), ADMIN_LOGIN_ID: JSON.stringify(config.loginId) } });
 await writeFile('assets/admin.js.LICENSE.txt', 'Supabase JavaScript client: MIT license. https://github.com/supabase/supabase-js/blob/master/LICENSE\n');
+await build({entryPoints:['js/traffic.js'],bundle:true,minify:true,target:['es2022'],outfile:'assets/traffic.js',define:{PUBLIC_SUPABASE_URL:JSON.stringify(url),PUBLIC_SUPABASE_KEY:JSON.stringify(key)}});
 console.log(`Admin built; Supabase ${url && key ? 'configured' : 'awaiting project configuration'}.`);

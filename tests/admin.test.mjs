@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import {readFile} from 'node:fs/promises';
-const source=(await readFile(new URL('../js/admin.js',import.meta.url),'utf8')).replace(/^import .*;\r?\n/,'');
+const source=(await readFile(new URL('../js/admin.js',import.meta.url),'utf8')).replace(/^import .*;\r?\n/gm,'');
 async function boot({user=null,userError=null,member=null,memberError=null,configured=true,hash=''}={}) {
  const elements=new Map(), events={};let signedOut=0,filter;
  const element=id=>{
@@ -12,7 +12,7 @@ async function boot({user=null,userError=null,member=null,memberError=null,confi
  const client={auth:{getUser:async()=>({data:{user},error:userError}),signOut:async()=>{signedOut++;return {error:null};},onAuthStateChange:callback=>{events.auth=callback;},signInWithPassword:async()=>({error:{message:'invalid'}}),resetPasswordForEmail:async()=>({error:null}),updateUser:async()=>({error:null})},from:name=>{
   assert.equal(name,'admin_members');return {select:()=>({eq:(column,id)=>{filter={column,id};return {maybeSingle:async()=>({data:member,error:memberError})};}})};
  }};
- const context=vm.createContext({createClient:()=>client,ADMIN_SUPABASE_URL:configured?'https://example.supabase.co':'',ADMIN_SUPABASE_KEY:configured?'sb_publishable_example':'',ADMIN_USERNAME:'admin',ADMIN_LOGIN_ID:'admin@example.org',document:{getElementById:element,documentElement:{},querySelectorAll:()=>[]},location:{href:'https://example.org/admin/',origin:'https://example.org',search:'',hash},localStorage:{getItem:()=>null,setItem(){}},history:{replaceState(){}},URLSearchParams,URL,Date,setTimeout:callback=>{events.scheduled=callback;}});
+ const context=vm.createContext({createDashboard:()=>({start(){},stop(){},setLanguage(){}}),createClient:()=>client,ADMIN_SUPABASE_URL:configured?'https://example.supabase.co':'',ADMIN_SUPABASE_KEY:configured?'sb_publishable_example':'',ADMIN_USERNAME:'admin',ADMIN_LOGIN_ID:'admin@example.org',document:{getElementById:element,documentElement:{},querySelectorAll:()=>[]},location:{href:'https://example.org/admin/',origin:'https://example.org',search:'',hash},localStorage:{getItem:()=>null,setItem(){}},history:{replaceState(){}},URLSearchParams,URL,Date,setTimeout:callback=>{events.scheduled=callback;}});
  await vm.runInContext('(async()=>{'+source+';globalThis.testApp={verifyAccess,show};})()',context);
  return {element,context,events,signedOut:()=>signedOut,filter:()=>filter,client};
 }

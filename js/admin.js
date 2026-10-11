@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import { createDashboard } from './dashboard.js';
 
 const copy = {
  ar: {brand:'دروب العربية',website:'العودة إلى الموقع ↗',space:'مساحة الإدارة',story:'رحلة التعلّم،\nتبدأ من هنا.',storyBody:'مساحتك الخاصة لإدارة دروب العربية.',restricted:'دخول مخصص لفريق الإدارة',login:'تسجيل الدخول',loginBody:'أهلاً بعودتك. أدخل بيانات حساب الإدارة.',username:'اسم المستخدم',password:'كلمة المرور',show:'إظهار',hide:'إخفاء',signIn:'دخول إلى لوحة الإدارة',backLogin:'العودة لتسجيل الدخول',newPassword:'كلمة المرور الجديدة',confirmPassword:'تأكيد كلمة المرور',passwordHelp:'استخدم 12 حرفاً على الأقل.',savePassword:'حفظ كلمة المرور',note:'دخول مخصص لمسؤول الموقع.',welcome:'أهلاً بك في لوحة الإدارة',logout:'تسجيل الخروج',active:'حساب الإدارة مفعّل',dashboardBody:'تم تسجيل الدخول بأمان. أدوات تحرير المحتوى ستكون الخطوة التالية.',articles:'المقالات',articlesBody:'استعرض المقالات المنشورة على الموقع.',viewArticles:'عرض المقالات ↗',account:'حسابك',accountBody:'حافظ على أمان حساب الإدارة بكلمة مرور قوية.',changePassword:'تغيير كلمة المرور',checking:'جارٍ التحقق من الاتصال…',setup:'تسجيل الدخول غير متاح بعد. جارٍ إعداد اتصال لوحة الإدارة.',unavailable:'تعذّر الاتصال. حاول مرة أخرى بعد قليل.',invalid:'تعذّر تسجيل الدخول. تحقق من اسم المستخدم وكلمة المرور وحاول مجدداً.',denied:'هذا الحساب لا يملك صلاحية دخول لوحة الإدارة.',newBody:'اختر كلمة مرور قوية لحسابك.',mismatch:'كلمتا المرور غير متطابقتين.',passwordFailed:'تعذّر حفظ كلمة المرور. حاول مجدداً.',passwordSaved:'تم حفظ كلمة المرور. سجّل الدخول بكلمة المرور الجديدة.',logoutFailed:'تعذّر تسجيل الخروج. حاول مجدداً.',title:'لوحة الإدارة — دروب العربية'},
@@ -13,6 +14,7 @@ let mode = 'login', statusKey = 'checking', statusKind = '', busy = false, versi
 const client = ADMIN_SUPABASE_URL && ADMIN_SUPABASE_KEY ? createClient(ADMIN_SUPABASE_URL, ADMIN_SUPABASE_KEY, {
  auth: {persistSession:true,autoRefreshToken:true,detectSessionInUrl:false,storageKey:'durob-admin-auth'}
 }) : null;
+const dashboard = client ? createDashboard(client, () => lang) : null;
 
 function translate() {
  document.documentElement.lang=lang; document.documentElement.dir=lang==='ar'?'rtl':'ltr'; document.title=copy[lang].title;
@@ -25,6 +27,7 @@ function translate() {
  $('form-description').textContent=copy[lang][mode==='password'?'newBody':'loginBody'];
  $('auth-status').textContent=statusKey?copy[lang][statusKey]:'';
  $('auth-status').dataset.kind=statusKind;
+ dashboard?.setLanguage();
 }
 function status(key='',kind='') {statusKey=key;statusKind=kind;translate();}
 function show(next) {
@@ -32,6 +35,7 @@ function show(next) {
  $('auth-view').hidden=next==='dashboard';$('dashboard-view').hidden=next!=='dashboard';
  ['login','password'].forEach(form=>$(form+'-form').hidden=next!==form);
  translate();
+ if(next==='dashboard')dashboard?.start();else dashboard?.stop();
 }
 function setBusy(value) { busy=value; document.querySelectorAll('form button, #sign-out, #change-password').forEach(el=>el.disabled=value); }
 function clearPasswords() {['password','new-password','confirm-password'].forEach(id=>$(id).value='');}

@@ -1,6 +1,6 @@
 # دروب العربية — Homepage
 
-Static website with a Supabase-powered administrator login. The **Homepage** follows the Figma file
+Website with a Supabase-powered administrator dashboard and live content. The **Homepage** follows the Figma file
 [durobalarabia](https://www.figma.com/design/SMCW0TA7l2dkhWfe3qwIFi/durobalarabia)
 (pages "01 — Mobile Screens" and "02 — Desktop Screens", tokens from "00 — Foundations").
 
@@ -13,6 +13,42 @@ python3 -m http.server 8080 --directory dist   # then visit http://localhost:808
 ```
 
 Netlify installs the locked dependencies and builds `dist/` automatically.
+
+## Administrator dashboard and live content
+
+Open `/admin/` and use the existing administrator account. The sidebar includes an overview,
+programs and articles. Both content editors support Arabic and Turkish, cover images and uploads,
+draft/published status, display order, and confirmed deletion. The program editor also controls
+registration links, details, galleries and featured programs. The article editor supports headings,
+paragraphs, lists, categories, publication dates and SEO titles. Slugs stay fixed after creation.
+
+Supabase `cms_programs` and `cms_articles` are the live source of truth. Content is seeded from
+the original files with `scripts/seed_cms.mjs` (inserts only missing slugs; never overwrites edits).
+`content/articles.json` remains a build fixture, not the source for live edits. The database schema
+is documented in `supabase/cms.sql`; the dedicated project already has it applied.
+
+Netlify's `content` function renders the home program/article sections, programs page,
+both article archives, full article pages and sitemap from published database records on every
+request. Responses are not cached, so published changes appear on the next page load without a
+build. Draft/deleted article URLs return 404, including URLs with old generated static files.
+Articles retain full HTML content, canonical/hreflang links, social metadata and structured data.
+Local static servers only show build fixtures; use Netlify Dev to test the deployed routing.
+
+The overview uses private aggregates and Supabase Realtime with a 15-second polling fallback.
+It shows active visitors (last two minutes), today's views, 30-day views/unique browsers,
+24-hour/30-day graphs, top pages and referrers. Each article has its own 30-day graph and totals.
+All timestamps use UTC. These are first-party browser measurements starting with this release,
+not historical Netlify/Google Analytics data. Tracking excludes admin, localhost, deploy previews,
+automated browsers and visitors who request Do Not Track or Global Privacy Control. No cookies,
+IP addresses or form data are stored; a random browser identifier is kept in local storage.
+
+Only verified `admin_members` can edit content/upload media/read analytics. Public visitors can
+only read published content and submit validated, rate-limited visit events. Revisions protect
+against stale overwrites. Rendering escapes content and validates links; browser bundles contain
+only the publishable key. Never add a service-role key to the frontend.
+
+Validation: `npm run test:admin`, `npm run test:cms`, and
+`python -m unittest discover -s tests -p 'test_*.py'`.
 
 ## How it matches Figma
 

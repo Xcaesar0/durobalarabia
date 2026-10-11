@@ -9,6 +9,7 @@
   <link rel="icon" href="/assets/img/logo.png" />
   <link rel="stylesheet" href="/css/base.css" />
   <link rel="stylesheet" href="/css/admin.css" />
+  <link rel="stylesheet" href="/css/dashboard.css" />
   <script type="module" src="/assets/admin.js"></script>
 </head>
 <body class="admin-page">
@@ -39,9 +40,9 @@
     </section>
     <section id="dashboard-view" class="dashboard" hidden aria-labelledby="dashboard-title">
       <div class="dashboard-heading"><div><span class="eyebrow" data-i18n="space">مساحة الإدارة</span><h1 id="dashboard-title" data-i18n="welcome">أهلاً بك في لوحة الإدارة</h1><p id="account-email" dir="ltr"></p></div><button id="sign-out" class="outline-button" type="button" data-i18n="logout">تسجيل الخروج</button></div>
-      <div class="account-banner"><span class="connection-dot" aria-hidden="true"></span><div><h2 data-i18n="active">حساب الإدارة مفعّل</h2><p data-i18n="dashboardBody">تم تسجيل الدخول بأمان. أدوات تحرير المحتوى ستكون الخطوة التالية.</p></div></div>
-      <div class="dashboard-grid"><article><span class="eyebrow">01</span><h2 data-i18n="articles">المقالات</h2><p data-i18n="articlesBody">استعرض المقالات المنشورة على الموقع.</p><a href="/articles/" id="articles-link" data-i18n="viewArticles">عرض المقالات ↗</a></article><article><span class="eyebrow">02</span><h2 data-i18n="account">حسابك</h2><p data-i18n="accountBody">حافظ على أمان حساب الإدارة بكلمة مرور قوية.</p><button id="change-password" type="button" class="text-button" data-i18n="changePassword">تغيير كلمة المرور</button></article></div>
       <p id="dashboard-status" role="status" aria-live="polite" class="status"></p>
+      <div class="cms-workspace"><aside class="cms-sidebar"><div class="sidebar-label">DUROB / ADMIN</div><nav aria-label="إدارة الموقع / Site yönetimi"><button type="button" data-tab="home" aria-current="page">الرئيسية</button><button type="button" data-tab="programs">البرامج</button><button type="button" data-tab="articles">المقالات</button></nav><div class="sidebar-account"><a href="/articles/" id="articles-link" data-i18n="viewArticles">عرض المقالات ↗</a><button id="change-password" type="button" class="text-button" data-i18n="changePassword">تغيير كلمة المرور</button></div></aside><div id="cms-content" class="cms-content"></div></div>
+      <dialog id="cms-delete" class="cms-dialog"></dialog>
     </section>
   </main><footer class="admin-footer">© <span id="year">2026</span> <span data-i18n="brand">دروب العربية</span></footer>
 </body>

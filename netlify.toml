@@ -6,6 +6,13 @@
   PYTHON_VERSION = "3.12"
   NODE_VERSION = "22"
 
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[functions.content]
+  included_files = ["index.html", "programs.html", "templates/editorial.html", "config/supabase-public.json"]
+
 [[redirects]]
   from = "/admin"
   to = "/admin/"
@@ -18,4 +25,4 @@
     Cache-Control = "no-store"
     Referrer-Policy = "no-referrer"
     X-Content-Type-Options = "nosniff"
-    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self' https://*.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https:; font-src 'self'; connect-src 'self' https://*.supabase.co wss://*.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
