@@ -1,12 +1,26 @@
 {
-  "name": "durob-alarabia",
+  "name": "durob-alarabia-react",
+  "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "build": "node scripts/build_admin.mjs && python scripts/build_articles.py --publish",
-    "build:admin": "node scripts/build_admin.mjs",
-    "test:admin": "node --test tests/admin.test.mjs",
-    "test:cms": "node --test tests/cms.test.mjs"
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build && node scripts/prerender.mjs",
+    "build:renderer": "vite build --ssr src/entry-server.jsx --outDir renderer",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node --test tests/*.test.mjs",
+    "handoff": "node scripts/handoff.mjs"
   },
-  "dependencies": { "@supabase/supabase-js": "2.117.3" },
-  "devDependencies": { "esbuild": "0.28.2" }
+  "dependencies": {
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "6.1.2",
+    "prettier": "3.9.10",
+    "vite": "8.3.4"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
 }

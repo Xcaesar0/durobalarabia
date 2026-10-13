@@ -1,0 +1,51 @@
+.admin-main-wide {
+  width: min(1540px, calc(100% - 64px));
+  margin: 12px auto;
+}
+.preview-notice {
+  padding: 16px 20px;
+  border: 1px solid var(--brand-gold);
+  border-radius: 12px;
+  background: #eee7db;
+  color: #4f4840;
+  font-size: 13px;
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+.article-toc > a {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.article-prose ul {
+  list-style: disc;
+  padding-inline-start: 24px;
+  margin-bottom: 24px;
+}
+.admin-page .language-switch a {
+  color: #471616;
+}
+.admin-page .language-switch a[aria-current] {
+  color: white;
+}
+.contact-page .contact-success[hidden] {
+  display: none;
+}
+.vmodal__box {
+  position: relative;
+}
+.cms-shell .cms-program-copy :is(h2, p, span, li) {
+  direction: inherit;
+}
+html[lang="tr"] .cms-shell .cms-program-copy {
+  text-align: left;
+}
+.contact-page {
+  background: var(--background-primary);
+}
+@media (max-width: 760px) {
+  .admin-main-wide {
+    width: calc(100% - 28px);
+  }
+}

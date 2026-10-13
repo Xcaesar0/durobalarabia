@@ -374,7 +374,7 @@
   content: "";
   position: absolute;
   inset: -15px;
-  background: url("../assets/img/video-thumb.jpg") center / cover no-repeat;
+  background: url("/assets/img/video-thumb.jpg") center / cover no-repeat;
   filter: blur(5px);
 }
 
@@ -978,7 +978,7 @@
   top: 529px;
   width: 100%;
   height: 2px;
-  background: url("../assets/img/adv-route.svg") repeat-x left center / 1440px 2px;
+  background: url("/assets/img/adv-route.svg") repeat-x left center / 1440px 2px;
 }
 
 .dest {
@@ -1763,7 +1763,7 @@
   content: "";
   position: absolute;
   inset: -15px;
-  background: url("../assets/img/trip-thumb.jpg") center / cover no-repeat;
+  background: url("/assets/img/trip-thumb.jpg") center / cover no-repeat;
   filter: blur(5px);
 }
 

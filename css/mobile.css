@@ -273,7 +273,7 @@
   content: "";
   position: absolute;
   inset: -12px;
-  background: url("../assets/img/video-thumb.jpg") center / cover no-repeat;
+  background: url("/assets/img/video-thumb.jpg") center / cover no-repeat;
   filter: blur(4px);
 }
 
@@ -1345,7 +1345,7 @@
   content: "";
   position: absolute;
   inset: -12px;
-  background: url("../assets/img/trip-thumb.jpg") center / cover no-repeat;
+  background: url("/assets/img/trip-thumb.jpg") center / cover no-repeat;
   filter: blur(4px);
 }
 

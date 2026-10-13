@@ -1,1 +1,0 @@
-Supabase JavaScript client: MIT license. https://github.com/supabase/supabase-js/blob/master/LICENSE
