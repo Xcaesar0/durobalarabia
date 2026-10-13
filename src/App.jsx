@@ -4,7 +4,7 @@ import Programs from "./pages/Programs.jsx";
 import Contact from "./pages/Contact.jsx";
 import Articles, { NotFound, EditorialHeader } from "./pages/Articles.jsx";
 import Admin from "./pages/Admin.jsx";
-import { LocaleContext } from "./locale.jsx";
+import { LocaleContext, LanguageSwitch } from "./locale.jsx";
 import { ContentContext } from "./components/Content.jsx";
 import { InteractionLayer, useScale } from "./components/Interactions.jsx";
 import { seedContent, loadPreview } from "./data/content-store.js";
@@ -129,6 +129,11 @@ export default function App({
   return (
     <LocaleContext.Provider value={{ lang: route.lang, path, navigate }}>
       <ContentContext.Provider value={content}>
+        {["home", "programs", "contact"].includes(route.kind) && (
+          <div className="mobile-language">
+            <LanguageSwitch />
+          </div>
+        )}
         {includeSeo && <Seo path={path} data={content} />}
         <InteractionLayer key={route.kind}>
           {unavailable && route.kind !== "admin" ? (

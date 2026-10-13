@@ -54,6 +54,7 @@ test("both layout compositions and bento cards remain in the React homepage", ()
   assert.match(r.html, /page--mobile/);
   assert.match(r.html, /d-features__row/);
   assert.match(r.html, /mf-pair/);
+  assert.match(r.html, /mobile-language/);
   assert.match(r.html, /data-yt="AoOTpDCN2tM"/);
   assert.match(r.html, /Birlikte Arapça/);
 });
